@@ -7,10 +7,10 @@ body
 {
     font-size: 40px;
     width: 100%;
-    margin: 2% 5%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     color: #FFFFFF;
+    margin-top: 10%
 }
 
 #loginDiv
@@ -55,21 +55,36 @@ body
     opacity: 50%;
 }
 
+body { background: #707070 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+.container{
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    font-family: sans-serif;                
+}
+
+.submitButton{
+    align-self: center;
+}
+
 #loginName
 {
-	font-size: 30px;
+	font-size: 20px;
 }
 #loginPassword
 {
-	font-size: 30px;
+	font-size: 20px;
 }
 #searchText
 {
-	font-size: 30px;
+	font-size: 20px;
 }
 #colorText
 {
-	font-size: 30px;
+	font-size: 20px;
 }
 
 input[type="text"],input[type="password"]{
