@@ -1,0 +1,200 @@
+
+body 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+.login-form {
+    background-color: rgb(128, 0, 32);
+    color: white;
+    padding: 30px;
+    border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#form-text {
+    color: white;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 14;
+}
+
+#title 
+{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(128, 0, 32);
+}
+
+#loginDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+}
+
+#loggedInDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+}
+
+#accessUIDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+}
+
+.buttons
+{
+    font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: 25%;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: black;
+}
+
+.buttons:hover{
+    background-color: #00d5124f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+#loginButton {
+
+    background-color: rgb(128, 0, 32);
+    color: rgb(205, 169, 52);
+    border-color: white;
+    transition: 0.5s;
+}
+
+#loginButton:hover {
+    background-color:  rgb(205, 169, 52);
+    color: rgb(128, 0, 32);
+}
+
+#loginButton:active {
+    opacity: 0.7;
+}
+
+body { 
+    background-image: url(https://media.istockphoto.com/id/1141250330/photo/friends-are-there-when-you-need-them-most.jpg?s=612x612&w=0&k=20&c=tJ5J7cC7ZIqEeWuHnyqyWTNAnZUrOi3wlu-V-KuDcaU=)    !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+.container{
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    font-family: sans-serif;                
+}
+
+.submitButton{
+    align-self: center;
+}
+
+#loginName
+{
+	font-size: 20px;
+}
+#loginPassword
+{
+	font-size: 20px;
+}
+#searchText
+{
+	font-size: 20px;
+}
+#colorText
+{
+	font-size: 20px;
+}
+
+input[type="text"],input[type="password"]{
+    text-align: center;
+    width: 100%;
+}
+
+input[type="text"],input[type="email"]{
+    text-align: center;
+    width: 100%;
+}
+
+#inner-title{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+#loginResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+#userName{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#logoutButton{
+    width: 20%;
+    margin-left: 40%;
+}
+
+select{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    font-size: 0.75em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#colorSearchResult{
+    display: none;
+}
+
+#colorAddResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
