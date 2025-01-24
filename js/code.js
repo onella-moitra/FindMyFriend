@@ -5,8 +5,17 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
+
+const myButton = document.getElementById('loginButton');
+
+myButton.addEventListener('click', () => {
+	console.log("CLick")
+   doLogin(); 
+});
+
 function doLogin()
 {
+	console.log("Logging in")
 	userId = 0;
 	firstName = "";
 	lastName = "";
