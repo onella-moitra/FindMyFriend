@@ -15,22 +15,29 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="login-form">
-            <h5 class="card-title">Please log in</h5>
+            <h5 class="card-title">Enter the data of the new account</h5>
             <form>
               <div class="mb-2">
-               <label for="loginName" class="form-label">Username</label>
-               <input type="text" class="form-control col-xs-6" id="loginName" placeholder="Enter a username" aria-describedby="emailHelp">
-               <div id="emailHelp" class="form-text" style="color: white">We'll never share your username with anyone else.</div>
+               <label for="firstName" class="form-label">First Name</label>
+               <input type="text" class="form-control col-xs-6" id="firstName" placeholder="Richard">
              </div>
              <div class="mb-2">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control col-xs-6" id="lastName" placeholder="Leinecker">
+            </div>
+            <div class="mb-2">
+              <label for="loginName" class="form-label">Username</label>
+              <input type="text" class="form-control col-xs-6" id="loginName" placeholder="RickL" aria-describedby="emailHelp">
+            </div>
+             <div class="mb-2">
                 <label for="loginPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Enter a password">
+                <input type="password" class="form-control" id="loginPassword" placeholder="password">
               </div>
               <div class="col text-center">
-                <button type="button" class="btn btn-primary btn-block" id="loginButton">Submit</button>
+                <button type="button" class="btn btn-primary btn-block" id="registerButton">Register</button>
               </div>
            </form>
-           <a href="register.html"  style="color: white; align-self: center;">First-time user? Register for an account.</a>
+           <a href="index.html"  style="color: white; align-self: center;">Already have an account?</a>
           </div>
         <span id="loginResult"></span>
         </div>

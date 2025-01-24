@@ -94,6 +94,23 @@ body
     opacity: 0.7;
 }
 
+#registerButton {
+
+    background-color: rgb(128, 0, 32);
+    color: rgb(205, 169, 52);
+    border-color: white;
+    transition: 0.5s;
+}
+
+#registerButton:hover {
+    background-color:  rgb(205, 169, 52);
+    color: rgb(128, 0, 32);
+}
+
+#registerButton:active {
+    opacity: 0.7;
+}
+
 body { 
     background-image: url(https://media.istockphoto.com/id/1141250330/photo/friends-are-there-when-you-need-them-most.jpg?s=612x612&w=0&k=20&c=tJ5J7cC7ZIqEeWuHnyqyWTNAnZUrOi3wlu-V-KuDcaU=)    !important;
     background-repeat: no-repeat;
@@ -118,6 +135,17 @@ input {
 {
 	font-size: 20px;
 }
+
+#firstName
+{
+	font-size: 20px;
+}
+
+#lastName
+{
+	font-size: 20px;
+}
+
 #loginPassword
 {
 	font-size: 20px;
@@ -131,12 +159,12 @@ input {
 	font-size: 20px;
 }
 
-input[type="text"],input[type="password"]{
+input[type="text"]{
     text-align: center;
     width: 100%;
 }
 
-input[type="text"],input[type="email"]{
+input[type="password"]{
     text-align: center;
     width: 100%;
 }
