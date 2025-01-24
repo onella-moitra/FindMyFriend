@@ -1,4 +1,4 @@
-const urlBase = 'http://findmyfriend.online/';
+const urlBase = 'http://findmyfriend.online/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
