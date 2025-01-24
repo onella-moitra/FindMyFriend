@@ -1,17 +1,28 @@
+
 body 
 {
-    background-color: #707070;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
 }
 
 .login-form {
-    background-color: #fff;
+    background-color: rgb(128, 0, 32);
+    color: white;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#form-text {
+    color: white;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 14;
 }
 
 #title 
@@ -20,7 +31,7 @@ body
     width: 100%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
+    color: rgb(128, 0, 32);
 }
 
 #loginDiv
@@ -57,6 +68,7 @@ body
     width: 50%;
     margin-left: 25%;
     font-family: 'Ubuntu', sans-serif;
+    background-color: black;
 }
 
 .buttons:hover{
@@ -65,7 +77,29 @@ body
     opacity: 50%;
 }
 
-body { background: #707070 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+#loginButton {
+
+    background-color: rgb(128, 0, 32);
+    color: rgb(205, 169, 52);
+    border-color: white;
+    transition: 0.5s;
+}
+
+#loginButton:hover {
+    background-color:  rgb(205, 169, 52);
+    color: rgb(128, 0, 32);
+}
+
+#loginButton:active {
+    opacity: 0.7;
+}
+
+body { 
+    background-image: url(https://media.istockphoto.com/id/1141250330/photo/friends-are-there-when-you-need-them-most.jpg?s=612x612&w=0&k=20&c=tJ5J7cC7ZIqEeWuHnyqyWTNAnZUrOi3wlu-V-KuDcaU=)    !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 .container{
     justify-content: center;
