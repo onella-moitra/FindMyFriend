@@ -10,7 +10,7 @@ const myButton = document.getElementById("loginButton");
 
 myButton.addEventListener('click', () => {
 	console.log("CLick");
-   doLogin(); 
+	doLogin(); 
 });
 
 
