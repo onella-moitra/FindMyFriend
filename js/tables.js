@@ -10,16 +10,9 @@ const myButton = document.getElementById("logoutButton");
 
 myButton.addEventListener('click', () => {
 	console.log("Click");
-   doLogout(); 
+    doLogout(); 
 });
 
-function saveCookie()
-{
-	let minutes = 20;
-	let date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
 
 function readCookie()
 {
