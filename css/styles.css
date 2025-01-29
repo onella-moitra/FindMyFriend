@@ -8,6 +8,11 @@ body
 
 }
 
+h1{
+    width: auto;
+    flex-shrink: 0;
+}
+
 .header{
     background-color: #FFFFFF;
     padding: 10px 0;
@@ -38,12 +43,10 @@ body
 }
 
 .search-bar button{
-    font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
-    background-color: black;
+    background-color: rgb(128, 0, 32);
+    color: rgb(205, 169, 52);
+    border-color: white;
+    transition: 0.5s;
 }
 
 .login-form {
