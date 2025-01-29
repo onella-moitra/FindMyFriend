@@ -8,6 +8,44 @@ body
 
 }
 
+.header{
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.search-bar input[type="text"]{
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.search-bar button{
+    font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: 25%;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: black;
+}
+
 .login-form {
     background-color: rgb(128, 0, 32);
     color: white;
@@ -109,6 +147,11 @@ body
 
 #registerButton:active {
     opacity: 0.7;
+}
+
+.col-md-12{
+    flex: 1;
+    justify-content: space-between;
 }
 
 body { 
