@@ -12,13 +12,28 @@
       readCookie();
     }, false);
     </script>
+    <script src="https://kit.fontawesome.com/8a535be950.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header class="header">
         <div class="container-fluid">
           <div class="col-md-12 d-flex align-items-center">
-                <h1>Find My Friend</h1>
+                <div class="title-animation">
+                    <span>F</span>
+                    <span>i</span>
+                    <span>n</span>
+                    <span>d </span>
+                    <span>M</span>
+                    <span>y </span>
+                    <span>F</span>
+                    <span>r</span>
+                    <span>i</span>
+                    <span>e</span>
+                    <span>n</span>
+                    <span>d</span>
+                    <span>&nbsp;<i class="fa-solid fa-user"></i></span>
+                </div>
                 <span id="userName"></span>
                 <button type="button" id="logoutButton" class="btn btn-primary">Log Out</button>
           </div>
@@ -30,13 +45,35 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="search-bar">
-            <input type="text" placeholder="Search contact" class="form-control">
-            <button type ="submit"> Search</button>
-            
+            <input type="text" id = "searchInput" placeholder="Search contact" class="form-control">
+            <button class="btn btn-primary btn-block" id ="searchButton"> Search</button>
           </div>
         <span id="loginResult"></span>
         </div>
       </div>
+      <table class="search-table">
+        <thead>
+            <tr>
+                <th style="padding-left:15px">First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Edit or Delete</th>
+            </tr>
+            <tbody>
+              <!--Example Row-->
+              <tr>
+                <td>Some</td>
+                <td>One</td>
+                <td>someone@example.com</td>
+                <td>123-456-7890</td>
+                <td>Edit/Delete</td>
+              </tr>
+            </tbody>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
 </div>
 
