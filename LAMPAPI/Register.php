@@ -22,7 +22,7 @@
 		$rows = mysqli_num_rows($result);
 		if ($rows == 0)
 		{
-			$stmt = $conn->prepare("INSERT into Users (firstName, lastName, Login, Password) VALUES(?,?,?,?)");
+			$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
 			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 			$stmt->execute();
 			$id = $conn->insert_id;
