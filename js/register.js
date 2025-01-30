@@ -28,7 +28,7 @@ function doRegister(firstName, lastName, loginName, loginPassword) {
     const jsonPayload = JSON.stringify({
         firstName: firstName,
         lastName: lastName,
-        loginName: loginName,
+        login: loginName,
         password: loginPassword
     });
 
