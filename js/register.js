@@ -49,7 +49,7 @@ function doRegister(firstName, lastName, loginName, loginPassword) {
                 document.getElementById('loginResult').textContent = `Account created for ${firstName} ${lastName} with loginName ${loginName}.`;
                 document.getElementById('loginResult').style.color = 'green';
 
-                window.location.href = "index.html";
+                window.location.href = "tables.html";
             }
         };
         xhr.send(jsonPayload);
