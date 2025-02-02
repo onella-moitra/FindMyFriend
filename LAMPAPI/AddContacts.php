@@ -3,20 +3,20 @@
 	
 	$firstName = $inData["firstName"];
   $lastName = $inData["lastName"];
-	$phoneNumber = $inData["phoneNumber"];
-  $emailAddress = $inData["emailAddress"];
+	$phone = $inData["phone"];
+  $email = $inData["email"];
   $userId = $inData["userId"];
 
 
-	$conn = new mysqli("localhost", "root", "poops123", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
 	{
 			returnWithError( $conn->connect_error );
 	}
 	else
 	{
-			$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,PhoneNumber,EmailAddress, UserID) VALUES(?,?,?,?,?)");
-			$stmt->bind_param("ssssi", $firstName, $lastName, $phoneNumber, $emailAddress, $userId);
+			$stmt = $conn->prepare("INSERT into Contacts (FirstName,LastName,Phone,Email,UserID) VALUES(?,?,?,?,?)");
+			$stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $userId);
 			$stmt->execute();
 			$stmt->close();
 			$conn->close();
