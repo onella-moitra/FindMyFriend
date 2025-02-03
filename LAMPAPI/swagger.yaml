@@ -1,0 +1,256 @@
+swagger: "2.0"
+info:
+  description: This is the API documentation for the COP 4331 Demo Color App
+  version: 1.0.0
+  title: The Groovy Color App
+  contact:
+    email: Richard.Leinecker@ucf.edu
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Login
+      summary: Logs in to FindMyFriend
+      description: Logs in to FindMyFriend
+      operationId: doLogin
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        required: false
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+  /Register.php:
+    post:
+      tags:
+      - Login
+      summary: Creates new account
+      description: Creates new account on FindMyFriend
+      operationId: doRegister
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: Register
+        required: false
+        schema:
+          $ref: '#/definitions/Register'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+        "500":
+          description: Server Error
+  /AddContacts.php:
+    post:
+      tags:
+      - Manage Contacts
+      summary: Adds new contact
+      description: Adds a new contact on FindMyFriend
+      operationId: doAddContacts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: AddContactsItem
+        description: AddContacts
+        required: false
+        schema:
+          $ref: '#/definitions/AddContacts'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+        "500":
+          description: Server Error
+  /DeleteContacts.php:
+    post:
+      tags:
+      - Manage Contacts
+      summary: Removes a contact
+      description: Removes a contact on FindMyFriend
+      operationId: doDeleteContacts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: DeleteContactsItem
+        description: DeleteContacts
+        required: false
+        schema:
+          $ref: '#/definitions/DeleteContacts'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+        "500":
+          description: Server Error
+  /SearchContacts.php:
+    post:
+      tags:
+      - Search
+      summary: Searches contacts
+      description: Searches contacts from the contact database
+      operationId: searchContact
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchItem
+        description: Contact Search
+        required: false
+        schema:
+          $ref: '#/definitions/Search'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+        "500":
+          description: Server Error
+  /SearchUsers.php:
+    post:
+      tags:
+      - Search
+      summary: Searches users
+      description: Searches users from the user database
+      operationId: searchUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchUserItem
+        description: User Search
+        required: false
+        schema:
+          $ref: '#/definitions/SearchUsers'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: URL Not Found
+        "500":
+          description: Server Error
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: FredTheMan
+      password:
+        type: string
+        example: secret
+  Register:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - login
+    - password
+    properties:
+      firstName:
+        type: string
+        example: Fred
+      lastName:
+        type: string
+        example: Raymond
+      login:
+        type: string
+        example: FredTheMan
+      password:
+        type: string
+        example: secret
+  AddContacts:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - phoneNumber
+    - emailAddress
+    - userId
+    properties:
+      firstName:
+        type: string
+        example: Fred
+      lastName:
+        type: string
+        example: Raymond
+      phoneNumber:
+        type: string
+        example: 1234567890
+      emailAddress:
+        type: string
+        example: freddie@fred.com
+      userId:
+        type: integer
+        example: 1
+  DeleteContacts:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - userId
+    properties:
+      firstName:
+        type: string
+        example: Fred
+      lastName:
+        type: string
+        example: Raymond
+      userId:
+        type: integer
+        example: 1
+  Search:
+    type: object
+    required:
+    - search
+    - userId
+    properties:
+      userId:
+        type: integer
+        example: 1
+      search:
+        type: string
+        example: bl
+  SearchUsers:
+    type: object
+    required:
+    - login
+    properties:
+      login:
+        type: string
+        example: Bob
+host: findmyfriend.online
+basePath: /LAMPAPI
+schemes:
+- http
