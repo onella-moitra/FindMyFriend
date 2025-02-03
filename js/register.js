@@ -39,6 +39,7 @@ function doRegister(firstName, lastName, loginName, loginPassword) {
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
+        document.getElementById("registerResult").innerHTML = "Working";
         xhr.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 const jsonObject = JSON.parse(xhr.responseText);
@@ -46,15 +47,21 @@ function doRegister(firstName, lastName, loginName, loginPassword) {
 
                 saveCookie();
 
-                document.getElementById('loginResult').textContent = `Account created for ${firstName} ${lastName} with loginName ${loginName}.`;
+                document.getElementById("registerResult").innerHTML = "Account created for ${firstName} ${lastName} with loginName ${loginName}.";
                 document.getElementById('loginResult').style.color = 'green';
 
                 window.location.href = "tables.html";
             }
+
+            if(this.status===409){
+                document.getElementById("registerResult").innerHTML = "Username is already taken.";
+                document.getElementById('loginResult').style.color = 'red';
+
+            }
         };
         xhr.send(jsonPayload);
     } catch (err) {
-        document.getElementById('loginResult').textContent = err.message;
+        document.getElementById("registerResult").innerHTML = err.message;
         document.getElementById('loginResult').style.color = 'red';
     }
 }
