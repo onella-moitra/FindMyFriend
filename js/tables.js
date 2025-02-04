@@ -135,7 +135,7 @@ function addContact()
 				  // Attach event listener to the delete button (using a closure)
 				  deleteButton.addEventListener("click", function() {
 					  const index = rowReferences.indexOf(row);
-					  deleteContact(contact.FirstName, contact.LastName, userId); 
+					  deleteContact(contact.ID); 
 					  tableBody.deleteRow(index);
 				  });
 
@@ -189,7 +189,7 @@ function searchContact()
 							contact.FirstName,
 							contact.LastName,
 							contact.Phone,
-							contact.Email
+							contact.Email,
 						  ];
 						  
 						  // 2. Loop through the data and create/append cells:
@@ -208,11 +208,35 @@ function searchContact()
 						// Attach event listener to the delete button (using a closure)
 						deleteButton.addEventListener("click", function() {
 							const index = rowReferences.indexOf(row);
-							deleteContact(contact.FirstName, contact.LastName, userId); 
+							deleteContact(contact.ID, userId); 
 							tableBody.deleteRow(index);
 						});
 						tableBody.appendChild(row);
 
+					});
+
+					const map = document.getElementById('map');
+					const contactInfo = document.getElementById('contact-info');
+				
+					jsonObject.forEach(contact => {
+						const waypoint = document.createElement('button'); // Create a <button> element
+						waypoint.classList.add('waypoint');
+						waypoint.style.left = getRandomNumber(0, 750) + 'px';
+						waypoint.style.top = getRandomNumber(0, 750) + 'px';
+						waypoint.addEventListener('click', () => {
+							window.location.href = '#contact-info';
+						}); 
+				
+						const initials = (contact.FirstName.charAt(0) + contact.LastName.charAt(0)).toUpperCase();
+						waypoint.textContent = initials;
+				
+						const tooltip = document.createElement('div');
+							tooltip.classList.add('tooltip');
+							tooltip.textContent = `${contact.FirstName} ${contact.LastName}`; // Tooltip text
+				
+						waypoint.appendChild(tooltip); // Add tooltip to the button
+				
+						map.appendChild(waypoint);
 					});
 			}
 		};
@@ -225,11 +249,10 @@ function searchContact()
 	
 }
 
-function deleteContact(firstName, lastName, userId)
+function deleteContact(ID)
 {
-	
-	console.log(typeof(firstName)+" "+typeof(lastName)+" "+typeof(userId));
-	let tmp = {firstName:firstName, lastName:lastName, userId:userId};
+	console.log(ID, userId);
+	let tmp = {userId:userId,contactId:ID,};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/deleteContacts.' + extension;
@@ -244,8 +267,7 @@ function deleteContact(firstName, lastName, userId)
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactSearchResult").innerHTML = "Contacts have been deleted successfully!";
-									
-				
+
 			}
 		};
 		xhr.send(jsonPayload);
@@ -257,3 +279,6 @@ function deleteContact(firstName, lastName, userId)
 	
 }
 
+function getRandomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
