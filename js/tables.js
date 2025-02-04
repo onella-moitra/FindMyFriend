@@ -251,11 +251,10 @@ function searchContact()
 
 function deleteContact(ID)
 {
-	console.log(ID, userId);
 	let tmp = {userId:userId,contactId:ID,};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/deleteContacts.' + extension;
+	let url = urlBase + '/DeleteContacts.' + extension;
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
