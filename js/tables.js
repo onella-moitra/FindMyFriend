@@ -131,7 +131,7 @@ function addContact()
 				  // Add delete button to each row
 				  const deleteCell = row.insertCell(); // Create a new cell for the button
 				  const deleteButton = document.createElement("button");
-				  deleteButton.textContent = "Delete";
+				  deleteButton.className = "fa-solid fa-trash-can deleteButton";
 				  deleteCell.appendChild(deleteButton);
 				  // Attach event listener to the delete button (using a closure)
 				  deleteButton.addEventListener("click", function() {
@@ -205,7 +205,7 @@ function searchContact()
 						// Add delete button to each row
 						const deleteCell = row.insertCell(); // Create a new cell for the button
 						const deleteButton = document.createElement("button");
-						deleteButton.textContent = "Delete";
+						deleteButton.className = "fa-solid fa-trash-can deleteButton";
 						deleteCell.appendChild(deleteButton);
 
 						// Attach event listener to the delete button (using a closure)
