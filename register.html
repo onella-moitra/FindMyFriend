@@ -8,7 +8,9 @@
   <script src="https://kit.fontawesome.com/8a535be950.js" crossorigin="anonymous"></script>
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/password.css">
-  <script type="text/javascript" src="js/password_create.js" defer></script>
+  <script type="text/javascript" src="js/names_email.js"></script>
+  <script type="text/javascript" src="js/password.js" defer></script>
+  <script type="text/javascript" src="js/terms.js" defer></script>
   <!--<script type="text/javascript" src="js/password_create.js" defer></script>-->
 </head>
 
@@ -19,15 +21,16 @@
       <div class="col-md-6">
         <div class="login-form">
           <h5 class="card-title">Enter the data of the new account</h5>
-          <form id="form">
+          <form id="reg-form">
             <div class="mb-2">
               <label for="firstName" class="form-label">First Name <span><i class="fa-solid fa-asterisk"></i></span></label>
               <input type="text" class="form-control col-xs-6" id="firstName" placeholder="Richard">
-              <div id="firstNameError" style="display: none; color: red;">Error: First name is required and must contain only letters.</div>
+               <p id="firstNameError" class="error-message">Error: First name is required and must contain only letters.</p>
             </div>
             <div class="mb-2">
               <label for="lastName" class="form-label">Last Name <span><i class="fa-solid fa-asterisk"></i></span></label>
               <input type="text" class="form-control col-xs-6" id="lastName" placeholder="Leinecker">
+              <p id="lastNameError" class="error-message">Error: Last name is required and must contain only letters.</p>
             </div>
             <div class="mb-2">
               <label for="loginEmail" class="form-label">Email <span><i class="fa-solid fa-asterisk"></i></span></label>
@@ -38,7 +41,7 @@
               <input type="text" class="form-control col-xs-6" id="loginName" placeholder="RickL" aria-describedby="emailHelp">
             </div>
             <div class="mb-2">
-              <label for="loginPassword" class="form-label">Password <span><i class="fa-solid fa-asterisk"></i></span></label>
+              <label for="loginPassword" id="reg-loginPassword" class="form-label">Password <span><i class="fa-solid fa-asterisk"></i></span></label>
               <div class="password-container" style="padding: 0; padding-right: 6px">
                 <input type="password" class="form-control" id="loginPassword" placeholder="password">
                 <i class="fa-solid fa-eye hide"></i>
@@ -52,8 +55,20 @@
                 <p id="number" class="invalid">A number</p>
                 <p id="length" class="invalid">Minimum 8 characters</p>
               </div>
-              <div id="errorMessage-password" style="display: none; color: white;">Error: The password does not meet the required criteria.</div>
+              <p id="errorMessage-password" class="error-message">Error: The password does not meet the required criteria.</p>
             </div>
+            <div class="terms-conditions">
+              <input type="checkbox" id="termsCheckbox">
+              <label for="termsCheckbox">&nbsp;I agree to the <a href="#" id="termsLink">Terms and Conditions</a></label>
+            </div>
+            <!-- The Modal -->
+            <div id="termsModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                  <span class="close"><i class="fa-regular fa-rectangle-xmark"></i>&nbsp;&nbsp;<pre id="termsText"></pre></span> 
+              </div>
+            </div>
+            <p class="error-message" id="terms-error">Error: You must agree to the terms and conditions before submitting.</p>
             <div class="col text-center">
               <button type="submit" class="btn btn-primary btn-block" id="registerButton">Register</button>
             </div>
