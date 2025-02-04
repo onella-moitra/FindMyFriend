@@ -39,7 +39,6 @@ function doRegister(firstName, lastName, loginName, loginPassword) {
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
-        document.getElementById("registerResult").innerHTML = "Working";
         xhr.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 const jsonObject = JSON.parse(xhr.responseText);
