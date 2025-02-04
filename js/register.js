@@ -1,3 +1,5 @@
+const { form } = require("./reg_validation");
+
 const urlBase = 'http://findmyfriend.online/LAMPAPI';
 const extension = 'php';
 
@@ -8,15 +10,19 @@ let lastName = "";
 document.addEventListener('DOMContentLoaded', function() {
     const registerButton = document.getElementById('registerButton');
     const loginResult = document.getElementById('loginResult');
+    const error_message = document.getElementById('error-message');
 
     registerButton.addEventListener('click', function() {
         firstName = document.getElementById('firstName').value;
         lastName = document.getElementById('lastName').value;
+        const loginEmail = document.getElementById('loginEmail').value;
         const loginName = document.getElementById('loginName').value;
         const loginPassword = document.getElementById('loginPassword').value;
 
+        validatePassword(loginPassword);
+
         if (firstName && lastName && loginName && loginPassword) {
-            doRegister(firstName, lastName, loginName, loginPassword);
+            doRegister(firstName, lastName, loginEmail, loginName, loginPassword);
         } else {
             loginResult.textContent = 'Please fill in all fields.';
             loginResult.style.color = 'red';
@@ -24,10 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function doRegister(firstName, lastName, loginName, loginPassword) {
+function doRegister(firstName, lastName, loginEmail, loginName, loginPassword) {
     const jsonPayload = JSON.stringify({
         firstName: firstName,
         lastName: lastName,
+        loginEmail: loginEmail,
         login: loginName,
         password: loginPassword
     });
@@ -71,3 +78,4 @@ function saveCookie() {
     date.setTime(date.getTime() + (minutes * 60 * 1000));
     document.cookie = `firstName=${firstName},lastName=${lastName},userId=${userId};expires=${date.toGMTString()}`;
 }
+
