@@ -4,7 +4,8 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
-const rowReferences = []
+const rowReferences = [];
+const waypoints = [];
 
 const myButton = document.getElementById("logoutButton");
 const searchButton = document.getElementById("searchButton");
@@ -179,6 +180,8 @@ function searchContact()
 
 				// Clear existing rows
 				tableBody.innerHTML = "";
+				clearWaypoints();
+				
 				// Loop through jsonObject and add rows
 						jsonObject.forEach(contact => {
 						let row = document.createElement("tr");
@@ -216,7 +219,6 @@ function searchContact()
 					});
 
 					const map = document.getElementById('map');
-					const contactInfo = document.getElementById('contact-info');
 				
 					jsonObject.forEach(contact => {
 						const waypoint = document.createElement('button'); // Create a <button> element
@@ -237,6 +239,7 @@ function searchContact()
 						waypoint.appendChild(tooltip); // Add tooltip to the button
 				
 						map.appendChild(waypoint);
+						waypoints.push(waypoint)
 					});
 			}
 		};
@@ -281,3 +284,10 @@ function deleteContact(ID)
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+function clearWaypoints() {
+    waypoints.forEach(waypoint => {
+        map.removeChild(waypoint);
+    });
+    waypoints.length = 0; // Clear the array
+}
