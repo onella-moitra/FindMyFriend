@@ -43,6 +43,18 @@ input[type="email"]:hover::placeholder {
     color: black;
 }
 
+.terms-conditions {
+    display: flex;
+    align-items: center;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+}
+
+.checkbox:active {
+    background-color: black;
+    color: #008B47;
+}
+
 .header{
     background-color: #008B47;
     padding: 10px 0;
@@ -70,13 +82,6 @@ input[type="email"]:hover::placeholder {
     flex-grow: 1;
     padding: 10px;
     margin-right: 10px;
-}
-
-.search-bar button{
-    background-color: rgb(128, 0, 32);
-    color: rgb(205, 169, 52);
-    border-color: rgb(205, 169, 52);
-    transition: 0.5s;
 }
 
 .wrapper {
@@ -187,13 +192,65 @@ input[type="email"]:hover::placeholder {
     font-size: 14;
 }
 
-a.link {
+a.link, #termsLink {
     color: black;
     align-self: center;
 }
 
-a.link:hover {
+a.link:hover, #termsLink:hover {
     color: white;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: black;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid white;
+    width: 80%; 
+}
+
+.close {
+    color: #008B47;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: top;
+}
+
+.close:hover,
+.close:focus, .modal-content:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.error-message {
+    display: none; 
+    color: white;
+}
+
+input[type="checkbox"] {
+    /*border: solid;
+    border-width: 2px;
+    border-color: black;*/
+}
+
+input[type="checkbox"]:checked {
+    background-color: black;
 }
 
 #title 
@@ -252,10 +309,9 @@ a.link:hover {
     opacity: 50%;
 }
 
-#loginButton, 
-#registerButton, 
-#searchButton, 
-#logoutButton {
+#loginButton, #registerButton, 
+#searchButton, #logoutButton, 
+#addButton, #deletebutton{
 
     background-color: black;
     color: #008B47;
@@ -263,27 +319,37 @@ a.link:hover {
     transition: 0.5s;
 }
 
-#loginButton:hover, 
-#registerButton:hover, 
-#searchButton:hover,
-#logoutButton:hover {
+#loginButton:hover, #registerButton:hover, 
+#searchButton:hover,#logoutButton:hover, 
+#addbutton:hover, #deleteButton:hover {
     background-color: white;
     color: #008B47;
     border: solid;
     border-color: white;
 }
 
-#loginButton:active, 
-#registerButton:active, 
-#searchButton:active, 
-#logoutButton:active {
+#loginButton:active, #registerButton:active, 
+#searchButton:active, #logoutButton:active, 
+#addButton:active, #deleteButton:active, 
+#searchButton:active, #openAddContactButton:active {
     opacity: 0.7;
 }
 
-#registerButton:active {
-    opacity: 0.7;
+#addButton {
+    align-self: center;
 }
 
+#searchButton, #openAddContactButton {
+    background-color: #008B47;
+    color: black;
+    transition: 0.3s;
+    border-color: black;
+}
+
+#searchButton:hover, #oppenAddContactButton:hover {
+    background-color: white;
+    color: #008B47;
+}
 .col-md-12{
     flex: 1;
     justify-content: space-between;
@@ -390,11 +456,6 @@ input[type="email"]{
 #logoutButton{
     width: 20%;
     margin-left: 40%;
-}
-
-#logoutButton:hover {
-    background-color: white;
-    color: rgb(205, 169, 52);
 }
 
 select{
