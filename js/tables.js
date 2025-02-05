@@ -12,6 +12,10 @@ const searchButton = document.getElementById("searchButton");
 const overlay = document.getElementById('overlay');
 const popup = document.getElementById('popup');
 const openAddContactButton=document.getElementById('openAddContactButton');
+const modal = document.getElementById('confirmationModal');
+const confirmButton = document.getElementById('confirmDelete');
+const cancelButton = document.getElementById('cancelDelete');
+let rowToDelete, contactToDelete;
 
 myButton.addEventListener('click', () => {
 	console.log("Click");
@@ -36,13 +40,26 @@ openAddContactButton.addEventListener('click', () => {
 });
 
 function closePopup() {
-            overlay.style.display = 'none'; // Hide the overlay and popup
+    overlay.style.display = 'none'; // Hide the overlay and popup
  }
 
- overlay.addEventListener('click', (event) => {
+overlay.addEventListener('click', (event) => {
 	if (event.target === overlay) { // Check if the click is on the overlay itself
 		closePopup();
 	}
+});
+
+confirmButton.addEventListener('click', () => {
+    deleteContact(contactToDelete); 
+	document.querySelector(".search-table tbody").deleteRow(rowToDelete);
+    modal.style.display = "none";
+    }
+);
+
+cancelButton.addEventListener('click', () => {
+    modal.style.display = "none"; // Hide the modal
+    rowToDelete = 0; // Reset
+	contactToDelete = 0;
 });
 	
 
@@ -112,6 +129,8 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				searchContact();
+				/*
 				const tableBody = document.querySelector(".search-table tbody"); // Or get the table by ID
 				const row = document.createElement("tr");
 				const cellData = [
@@ -134,13 +153,15 @@ function addContact()
 				  deleteButton.className = "fa-solid fa-trash-can deleteButton";
 				  deleteCell.appendChild(deleteButton);
 				  // Attach event listener to the delete button (using a closure)
-				  deleteButton.addEventListener("click", function() {
-					  const index = rowReferences.indexOf(row);
-					  deleteContact(contact.ID); 
-					  tableBody.deleteRow(index);
+				  deleteButton.addEventListener("click", function(event) {
+					event.preventDefault();
+					rowToDelete = rowReferences.indexOf(row);
+					contactToDelete = cell.ID;
+					modal.style.display= "block";
 				  });
 
 				  tableBody.appendChild(row);
+				  */
 
 
 			}
@@ -207,13 +228,14 @@ function searchContact()
 						const deleteButton = document.createElement("button");
 						deleteButton.className = "fa-solid fa-trash-can deleteButton";
 						deleteCell.appendChild(deleteButton);
-
 						// Attach event listener to the delete button (using a closure)
-						deleteButton.addEventListener("click", function() {
-							const index = rowReferences.indexOf(row);
-							deleteContact(contact.ID, userId); 
-							tableBody.deleteRow(index);
+						deleteButton.addEventListener("click", function(event) {
+						  event.preventDefault();
+						  rowToDelete = rowReferences.indexOf(row);
+						  contactToDelete = contact.ID;
+						  modal.style.display= "block";
 						});
+	  
 						tableBody.appendChild(row);
 
 					});
@@ -291,3 +313,11 @@ function clearWaypoints() {
     });
     waypoints.length = 0; // Clear the array
 }
+
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        rowToDelete = 0;
+		contactToDelete = 0;
+    }
+})
