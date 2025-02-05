@@ -173,7 +173,7 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactSearchResult").innerHTML = "Contacts have been retrieved";
+			//document.getElementById("contactSearchResult").innerHTML = "Contacts have been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText ).results;
 								//Display search on table
 				let tableBody = document.querySelector(".search-table tbody"); // Select the table body

@@ -115,7 +115,16 @@
     background-image: url("../images/UCFMAP.png"); /* Replace with your map image */
     background-size: cover;
     position: relative; /* Important for positioning waypoints */
-    border: 1px solid black;
+
+    border: 5px solid; /* Start with a solid border */
+    border-image: linear-gradient(to right, #008000, black, #008000) 1; /* Green to black gradient */
+    border-image-slice: 1; /* Ensure the entire gradient is used */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    /* Optional: Rounded corners */
+    border-radius: 10px; /* Adjust radius for desired roundness */
+    overflow: hidden; /* If you have rounded corners, this prevents map image from overflowing */
+
+    margin-top: 20px;
 }
 
 .waypoint-container { /* Container for button and tooltip */
@@ -156,6 +165,30 @@
 
 .waypoint:hover {
     background-color: green; /* Keep the hover effect */
+}
+
+#userName {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    color: white; /* White text */
+    font-family: 'Arial', sans-serif; /* Choose a clean font */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Make it bold (optional) */
+    text-align: center; /* Center the text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+    /* Optional: Add a subtle glow effect on hover */
+    transition: text-shadow 0.3s ease; /* Smooth transition for the shadow */
+    width: fit-content; /* Or a specific width like 300px */
+    margin: 0 auto; /* Only if you want to further center the text within the fit-content width */
+}
+
+#searchContainer{
+    margin-bottom:20px;
+}
+
+#userName:hover {
+    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.5); /* White glow on hover */
 }
 
 .waypoint:hover .tooltip {
