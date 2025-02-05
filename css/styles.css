@@ -204,6 +204,7 @@ a.link:hover, #termsLink:hover {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
+    justify-content: center;
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -399,6 +400,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
+    transition: background-color 1s ease;
 } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 .container{

@@ -111,6 +111,29 @@ function addContact()
 	let lastName = document.getElementById("LastName").value;
 	let phoneNumber = document.getElementById("PhoneNumber").value;
 	let emailAddress = document.getElementById("EmailAddress").value;
+	if(firstName.localeCompare("Rick") == 0 && lastName.localeCompare("Leinecker")==0){
+		closePopup();
+		console.log("DANGER");
+		const body = document.body;
+    	const soverlay = document.getElementById('soverlay');
+    	const logoutMessage = document.getElementById('logout-message');
+
+		body.classList.add('glitch');
+        soverlay.classList.add('active');
+        body.classList.add('flash');
+		logoutMessage.style.display = 'block';
+
+        setTimeout(() => {
+            body.classList.remove('glitch');
+            soverlay.classList.remove('active');
+            body.classList.remove('flash');
+            setTimeout(() => {
+                doLogout();
+            }, 3000);
+
+        }, 5000); 
+		return;
+	}
 
 	document.getElementById("contactAddResult").innerHTML = "";
 
@@ -207,7 +230,6 @@ function searchContact()
 						jsonObject.forEach(contact => {
 						let row = document.createElement("tr");
 						rowReferences.push(row);
-						console.log(rowReferences.indexOf(row));
 						// Assuming jsonObject contains objects like { name: "John", email: "john@example.com", phone: "1234567890" }
 						
 						const cellData = [
