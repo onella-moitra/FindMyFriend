@@ -4,7 +4,7 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
-const rowReferences = [];
+var rowReferences = [];
 const waypoints = [];
 
 const myButton = document.getElementById("logoutButton");
@@ -198,7 +198,7 @@ function searchContact()
 				let jsonObject = JSON.parse( xhr.responseText ).results;
 								//Display search on table
 				let tableBody = document.querySelector(".search-table tbody"); // Select the table body
-
+				rowReferences=[];
 				// Clear existing rows
 				tableBody.innerHTML = "";
 				clearWaypoints();
@@ -207,6 +207,7 @@ function searchContact()
 						jsonObject.forEach(contact => {
 						let row = document.createElement("tr");
 						rowReferences.push(row);
+						console.log(rowReferences.indexOf(row));
 						// Assuming jsonObject contains objects like { name: "John", email: "john@example.com", phone: "1234567890" }
 						
 						const cellData = [
