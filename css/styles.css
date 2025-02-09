@@ -73,6 +73,7 @@ input[type="email"]:hover::placeholder {
     border: 1px solid #008B47;
     border-radius: 5px;
     padding: 5px;
+    background-color: black;
 }
 
 
@@ -348,9 +349,43 @@ input[type="checkbox"]:checked {
     opacity: 50%;
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center; /* Center buttons in the table */
+    align-items: center;
+    row-gap: 10px; /* Space between buttons */
+}
+
+.buttonContainer button {
+    background-color: whitesmoke !important;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40px; 
+    height: 40px;
+    cursor: pointer;
+    border-color: white;
+    transition: 0.3s;
+}
+
+.buttonContainer button:hover {
+    color: black;
+}
+
+.deleteButton {
+    color: red !important;
+    margin-right: 10px;
+}
+.editButton {
+    color: blue;
+}
+
+.saveButton {
+    color: green;
+}
+
 #loginButton, #registerButton, 
 #searchButton, #logoutButton, 
-#addButton, #deletebutton{
+#addButton {
 
     background-color: black;
     color: #008B47;
@@ -360,7 +395,7 @@ input[type="checkbox"]:checked {
 
 #loginButton:hover, #registerButton:hover, 
 #searchButton:hover,#logoutButton:hover, 
-#addbutton:hover, #deleteButton:hover {
+#addButton:hover {
     background-color: white;
     color: #008B47;
     border: solid;
@@ -369,8 +404,8 @@ input[type="checkbox"]:checked {
 
 #loginButton:active, #registerButton:active, 
 #searchButton:active, #logoutButton:active, 
-#addButton:active, #deleteButton:active, 
-#searchButton:active, #openAddContactButton:active {
+#addButton:active, #searchButton:active, 
+#openAddContactButton:active {
     opacity: 0.7;
 }
 
@@ -508,4 +543,15 @@ select{
     margin-bottom: 1%;
     font-family: 'Ubuntu', sans-serif;
     color: #008B47;
+}
+
+.edit-input {
+    height: 30px;
+    box-sizing: border-box; /* Ensures padding/border don’t increase total width */
+    max-width: 100px; 
+    text-align: left;
+}
+
+.edit-input:active {
+    border-color: #008B47;
 }

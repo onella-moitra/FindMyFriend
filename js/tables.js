@@ -6,6 +6,7 @@ let firstName = "";
 let lastName = "";
 var rowReferences = [];
 const waypoints = [];
+const ids = [];
 
 const myButton = document.getElementById("logoutButton");
 const searchButton = document.getElementById("searchButton");
@@ -15,7 +16,8 @@ const openAddContactButton=document.getElementById('openAddContactButton');
 const modal = document.getElementById('confirmationModal');
 const confirmButton = document.getElementById('confirmDelete');
 const cancelButton = document.getElementById('cancelDelete');
-let rowToDelete, contactToDelete;
+const contactSearchResult = document.getElementById("contactSearchResult");
+let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
 myButton.addEventListener('click', () => {
 	console.log("Click");
@@ -61,7 +63,6 @@ cancelButton.addEventListener('click', () => {
     rowToDelete = 0; // Reset
 	contactToDelete = 0;
 });
-	
 
 function readCookie()
 {
@@ -111,6 +112,8 @@ function addContact()
 	let lastName = document.getElementById("LastName").value;
 	let phoneNumber = document.getElementById("PhoneNumber").value;
 	let emailAddress = document.getElementById("EmailAddress").value;
+
+	//Easter Egg
 	if(firstName.localeCompare("Rick") == 0 && lastName.localeCompare("Leinecker")==0){
 		closePopup();
 		console.log("DANGER");
@@ -153,40 +156,6 @@ function addContact()
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 				searchContact();
-				/*
-				const tableBody = document.querySelector(".search-table tbody"); // Or get the table by ID
-				const row = document.createElement("tr");
-				const cellData = [
-					firstName,
-					lastName,
-					phoneNumber,
-					emailAddress
-				  ];
-				  
-				  // 2. Loop through the data and create/append cells:
-				  cellData.forEach(dataItem => {
-					const cell = document.createElement("td");
-					cell.textContent = dataItem;
-					row.appendChild(cell);
-				  });
-
-				  // Add delete button to each row
-				  const deleteCell = row.insertCell(); // Create a new cell for the button
-				  const deleteButton = document.createElement("button");
-				  deleteButton.className = "fa-solid fa-trash-can deleteButton";
-				  deleteCell.appendChild(deleteButton);
-				  // Attach event listener to the delete button (using a closure)
-				  deleteButton.addEventListener("click", function(event) {
-					event.preventDefault();
-					rowToDelete = rowReferences.indexOf(row);
-					contactToDelete = cell.ID;
-					modal.style.display= "block";
-				  });
-
-				  tableBody.appendChild(row);
-				  */
-
-
 			}
 		};
 		xhr.send(jsonPayload);
@@ -195,9 +164,9 @@ function addContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
-	
 }
 
+//load the contact
 function searchContact()
 {
 	let srch = document.getElementById("searchInput").value;
@@ -227,65 +196,103 @@ function searchContact()
 				clearWaypoints();
 				
 				// Loop through jsonObject and add rows
-						jsonObject.forEach(contact => {
-						let row = document.createElement("tr");
-						rowReferences.push(row);
-						// Assuming jsonObject contains objects like { name: "John", email: "john@example.com", phone: "1234567890" }
+
+				jsonObject.forEach((contact) => {
+
+					let row = document.createElement("tr");
+					rowReferences.push(row);
+					// Assuming jsonObject contains objects like { name: "John", email: "john@example.com", phone: "1234567890" }
+					
+					const cellData = [
+						contact.FirstName,
+						contact.LastName,
+						contact.Phone,
+						contact.Email,
+					];
+					
+					// 2. Loop through the data and create/append cells:
+					cellData.forEach(dataItem => {
+						const cell = document.createElement("td");
+						// cell.id = `${dataItem} + ${i}`
+						cell.textContent = dataItem;
+						row.appendChild(cell);
+					});
+
+					// Add delete button to each row
+					const actionCell = row.insertCell(); // Create a new cell for the button
+					const buttonContainer = document.createElement("div");
+					
+					const deleteButton = document.createElement("button");
+					deleteButton.classList.add("deleteButton");
+					deleteButton.style.color="red";
+					deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+					// Attach event listener to the delete button (using a closure)
+
+					//Attach references
+					deleteButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						rowToDelete = rowReferences.indexOf(row);
+						contactToDelete = contact.ID;
+						modal.style.display= "block";
+					})
+
+					//Create edit Button
+					const editButton = document.createElement("button");
+					editButton.classList.add("editButton");
+					editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
+					editButton.addEventListener("click", function() {
+
+						contactToDelete = contact.ID;
+
+						row.querySelector(".editButton").style.display = "none";
+						row.querySelector(".saveButton").style.display = "inline-block";
+
+						editRow(row);
+					});
+
+					//Create saveButton
+					const saveButton = document.createElement("button")
+					saveButton.classList.add("saveButton");
+					saveButton.innerHTML = `<i class="fa-solid fa-check"></i>`;
+					saveButton.style.display = "none";
+					saveButton.addEventListener("click", function() {
 						
-						const cellData = [
-							contact.FirstName,
-							contact.LastName,
-							contact.Phone,
-							contact.Email,
-						  ];
-						  
-						  // 2. Loop through the data and create/append cells:
-						  cellData.forEach(dataItem => {
-							const cell = document.createElement("td");
-							cell.textContent = dataItem;
-							row.appendChild(cell);
-						  });
-
-						// Add delete button to each row
-						const deleteCell = row.insertCell(); // Create a new cell for the button
-						const deleteButton = document.createElement("button");
-						deleteButton.className = "fa-solid fa-trash-can deleteButton";
-						deleteCell.appendChild(deleteButton);
-						// Attach event listener to the delete button (using a closure)
-						deleteButton.addEventListener("click", function(event) {
-						  event.preventDefault();
-						  rowToDelete = rowReferences.indexOf(row);
-						  contactToDelete = contact.ID;
-						  modal.style.display= "block";
-						});
-	  
-						tableBody.appendChild(row);
-
+						row.querySelector(".editButton").style.display = "inline-block";
+						row.querySelector(".saveButton").style.display = "none";
+						saveRow(contactToEdit, row);
 					});
 
-					const map = document.getElementById('map');
-				
-					jsonObject.forEach(contact => {
-						const waypoint = document.createElement('button'); // Create a <button> element
-						waypoint.classList.add('waypoint');
-						waypoint.style.left = getRandomNumber(0, 750) + 'px';
-						waypoint.style.top = getRandomNumber(0, 750) + 'px';
-						waypoint.addEventListener('click', () => {
-							window.location.href = '#contact-info';
-						}); 
-				
-						const initials = (contact.FirstName.charAt(0) + contact.LastName.charAt(0)).toUpperCase();
-						waypoint.textContent = initials;
-				
-						const tooltip = document.createElement('div');
-							tooltip.classList.add('tooltip');
-							tooltip.textContent = `${contact.FirstName} ${contact.LastName}`; // Tooltip text
-				
-						waypoint.appendChild(tooltip); // Add tooltip to the button
-				
-						map.appendChild(waypoint);
-						waypoints.push(waypoint)
-					});
+					buttonContainer.appendChild(deleteButton);
+					buttonContainer.appendChild(editButton);
+					buttonContainer.appendChild(saveButton);
+
+					actionCell.appendChild(buttonContainer);
+					tableBody.appendChild(row);
+				});
+
+				const map = document.getElementById('map');
+			
+				jsonObject.forEach(contact => {
+					const waypoint = document.createElement('button'); // Create a <button> element
+					waypoint.classList.add('waypoint');
+					waypoint.style.left = getRandomNumber(0, 750) + 'px';
+					waypoint.style.top = getRandomNumber(0, 750) + 'px';
+					waypoint.addEventListener('click', () => {
+						window.location.href = '#contact-info';
+					}); 
+			
+					const initials = (contact.FirstName.charAt(0) + contact.LastName.charAt(0)).toUpperCase();
+					waypoint.textContent = initials;
+			
+					const tooltip = document.createElement('div');
+						tooltip.classList.add('tooltip');
+						tooltip.textContent = `${contact.FirstName} ${contact.LastName}`; // Tooltip text
+			
+					waypoint.appendChild(tooltip); // Add tooltip to the button
+			
+					map.appendChild(waypoint);
+					waypoints.push(waypoint)
+				});
 			}
 		};
 		xhr.send(jsonPayload);
@@ -294,7 +301,64 @@ function searchContact()
 	{
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
-	
+}
+
+function editRow(row){
+
+	let firstName = row.children[0];
+	let lastName = row.children[1];
+	let phone = row.children[2];
+	let email = row.children[3];
+
+	firstName.innerHTML = `<input type="text" value="${firstName.textContent}" class="edit-input">`;
+	lastName.innerHTML = `<input type="text" value="${lastName.textContent}" class="edit-input">`;
+	phone.innerHTML = `<input type="text" value="${phone.textContent}" class="edit-input">`;
+	email.innerHTML = `<input type="text" value="${email.textContent}" class="edit-input">`;
+}
+
+function saveRow(ID, row){
+
+	let newFirstName = row.children[0].querySelector("input").value;
+	let newLastName = row.children[1].querySelector("input").value;
+	let newPhone = row.children[2].querySelector("input").value;
+	let newEmail = row.children[3].querySelector("input").value;
+
+	// console.log(newFirstName, newLastName, newPhone, newEmail);
+
+	// if(!validateFields(newFirstName, newLastName, newPhone, newEmail)){
+	// 	console.log("invalid fields");
+	// 	contactSearchResult.style.color = "red";
+	// 	contactSearchResult.innerHTML = "Invalid fields!";
+	// 	return;
+	// }
+
+	row.children[0].innerHTML = newFirstName;
+	row.children[1].innerHTML = newLastName;
+	row.children[2].innerHTML = newPhone;
+	row.children[3].innerHTML = newEmail;
+
+	let tmp = { newFirstName:newFirstName, newLastName:newLastName, phoneNumber:newPhone, emailAddress:newEmail, contactId:ID};
+    jsonPayload = JSON.stringify( tmp );
+
+    let url = urlBase + '/UpdateContacts.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST",url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function(){
+			if (this.readyState == 4 && this.status == 200)
+			{
+				contactSearchResult.style.color = "white";
+				contactSearchResult.innerHTML = "Contacts updated successfully!";
+			}
+		};
+        xhr.send(jsonPayload);
+    }
+    catch(err)
+    {
+        document.getElementById("contactSearchResult").innerHTML = err.message;
+    }
 }
 
 function deleteContact(ID)
@@ -313,8 +377,8 @@ function deleteContact(ID)
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
+				contactSearchResult.style.color = "green";
 				document.getElementById("contactSearchResult").innerHTML = "Contacts have been deleted successfully!";
-
 			}
 		};
 		xhr.send(jsonPayload);
@@ -323,7 +387,6 @@ function deleteContact(ID)
 	{
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
-	
 }
 
 function getRandomNumber(min, max) {
@@ -344,3 +407,14 @@ window.addEventListener('click', (event) => {
 		contactToDelete = 0;
     }
 })
+
+function validateFields(newFirstName,newLastName,newPhone,newEmail){
+
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	}
+
+	return ((newFirstName != "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail)))
+}
+
