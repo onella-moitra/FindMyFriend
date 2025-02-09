@@ -51,7 +51,8 @@ overlay.addEventListener('click', (event) => {
 
 confirmButton.addEventListener('click', () => {
     deleteContact(contactToDelete); 
-	document.querySelector(".search-table tbody").deleteRow(rowToDelete);
+	//document.querySelector(".search-table tbody").deleteRow(rowToDelete);
+	searchContact();
     modal.style.display = "none";
     }
 );
@@ -254,7 +255,7 @@ function searchContact()
 						// Attach event listener to the delete button (using a closure)
 						deleteButton.addEventListener("click", function(event) {
 						  event.preventDefault();
-						  rowToDelete = rowReferences.indexOf(row);
+						//  rowToDelete = rowReferences.indexOf(row);
 						  contactToDelete = contact.ID;
 						  modal.style.display= "block";
 						});
@@ -340,7 +341,7 @@ function clearWaypoints() {
 window.addEventListener('click', (event) => {
     if (event.target == modal) {
         modal.style.display = "none";
-        rowToDelete = 0;
+        //rowToDelete = 0;
 		contactToDelete = 0;
     }
 })
