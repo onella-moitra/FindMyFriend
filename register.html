@@ -8,10 +8,7 @@
   <script src="https://kit.fontawesome.com/8a535be950.js" crossorigin="anonymous"></script>
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/password.css">
-  <script type="text/javascript" src="js/names_email.js"></script>
-  <script type="text/javascript" src="js/password.js" defer></script>
-  <script type="text/javascript" src="js/terms.js" defer></script>
-  <!--<script type="text/javascript" src="js/password_create.js" defer></script>-->
+  <script type="text/javascript" src="js/reg_validation.js" defer></script>
 </head>
 
 <body>
@@ -23,29 +20,31 @@
           <h5 class="card-title">Enter the data of the new account</h5>
           <form id="reg-form">
             <div class="mb-2">
-              <label for="firstName" class="form-label">First Name <span><i class="fa-solid fa-asterisk"></i></span></label>
-              <input type="text" class="form-control col-xs-6" id="firstName" placeholder="Richard">
-               <p id="firstNameError" class="error-message">Error: First name is required and must contain only letters.</p>
+              <label for="firstName" id="firstNameLabel" class="form-label">First Name <span><i class="fa-solid fa-asterisk"></i></span></label>
+              <input type="text" class="form-control col-xs-6" id="firstName" placeholder="First name">
+               <p id="firstNameError" class="error-message">Error: First name is required.</p>
             </div>
             <div class="mb-2">
-              <label for="lastName" class="form-label">Last Name <span><i class="fa-solid fa-asterisk"></i></span></label>
-              <input type="text" class="form-control col-xs-6" id="lastName" placeholder="Leinecker">
-              <p id="lastNameError" class="error-message">Error: Last name is required and must contain only letters.</p>
+              <label for="lastName" id="lastNameLabel" class="form-label">Last Name <span><i class="fa-solid fa-asterisk"></i></span></label>
+              <input type="text" class="form-control col-xs-6" id="lastName" placeholder="Last name">
+              <p id="lastNameError" class="error-message">Error: Last name is required.</p>
             </div>
             <div class="mb-2">
-              <label for="loginEmail" class="form-label">Email <span><i class="fa-solid fa-asterisk"></i></span></label>
-              <input type="email" class="form-control col-xs-6" id="loginEmail" placeholder="RickL@example.com" aria-describedby="email">
+              <label for="loginEmail" id="loginEmailLabel" class="form-label">Email <span><i class="fa-solid fa-asterisk"></i></span></label>
+              <input type="email" class="form-control col-xs-6" id="loginEmail" aria-describedby="email" placeholder="Email">
+              <p id="loginEmailErrorMessage" class="error-message">Error: Email is required have the @ follwed by a domain</p>
             </div>
             <div class="mb-2">
-              <label for="loginName" class="form-label">Username <span><i class="fa-solid fa-asterisk"></i></span></label>
-              <input type="text" class="form-control col-xs-6" id="loginName" placeholder="RickL" aria-describedby="emailHelp">
+              <label for="loginName" id="loginNameLabel" class="form-label">Username <span><i class="fa-solid fa-asterisk"></i></span></label>
+              <input type="text" class="form-control col-xs-6" id="loginName" aria-describedby="emailHelp" placeholder="Username">
+              <p id="loginNameErrorMessage" class="error-message">Error: Username is required</p>
             </div>
             <div class="mb-2">
               <label for="loginPassword" id="reg-loginPassword" class="form-label">Password <span><i class="fa-solid fa-asterisk"></i></span></label>
               <div class="password-container" style="padding: 0; padding-right: 6px">
-                <input type="password" class="form-control" id="loginPassword" placeholder="password">
-                <i class="fa-solid fa-eye hide"></i>
-                <i class="fa-solid fa-eye-slash"></i>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                  <i class="fa-solid fa-eye hide" id="showPassword"></i>
+                  <i class="fa-solid fa-eye-slash" id="hidePassword"></i>
               </div>
               <script type="text/javascript" src="js/eye.js"></script>
               <div id="password-message">
