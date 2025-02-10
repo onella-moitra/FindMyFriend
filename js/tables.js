@@ -29,7 +29,92 @@ const addButton = document.getElementById("addButton");
 addButton.addEventListener('click', (event) => {
 	event.preventDefault();
 	console.log("Click");
-    addContact(); 
+	const newFirstName = document.getElementById("FirstName");
+	const firstNameError = document.getElementById("newFirstNameError");
+
+	const newLastName = document.getElementById("LastName");
+	const lastNameError = document.getElementById("newLastNameError");
+
+	const newPhone = document.getElementById("PhoneNumber");
+	const phoneError = document.getElementById("phoneNumberError");
+
+	const newEmail = document.getElementById("EmailAddress");
+	const emailError = document.getElementById("emailAddressError");
+
+	const addForm = document.getElementById("addContactForm");
+
+	function validatePhoneNumber(phoneNumber) {
+		const phonePattern = /^\d+$/;
+		return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
+	}
+
+	function validateEmail(email) {
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailPattern.test(email.trim());
+	}
+		
+		let isValid = true;
+
+		if (newFirstName.value === "") {
+			newFirstName.style.border = "solid red 2px";
+			firstNameError.style.display = "block";
+
+			isValid = false;
+		}
+
+		if (newLastName.value === "") {
+			newLastName.style.border = "solid red 2px";
+			lastNameError.style.display = "block";
+
+			isValid = false;
+		} 
+
+		if (!validatePhoneNumber(newPhone.value)) {
+			newPhone.style.border = "solid red 2px";
+			phoneError.style.display = "block";
+			isValid = false;
+		} 
+
+		if (!validateEmail(newEmail.value)) {
+			newEmail.style.border = "solid red 2px";
+			emailError.style.display = "block";
+			isValid = false;
+		}
+
+		if (!isValid) {
+			return;
+		}
+
+		});
+
+		document.getElementById("FirstName").addEventListener('input', function() {
+			if(this.value.trim() !== "") {
+				firstNameError.style.display = "none";
+				newFirstName.style.border = "none";
+			}
+		  });
+		  
+		  document.getElementById("LastName").addEventListener('input', function() {
+			if(this.value.trim() !== "") {
+			  lastNameError.style.display = "none";
+			  newLastName.style.border = "none";
+			}
+		  });
+
+		  document.getElementById("PhoneNumber").addEventListener('input', function() {
+			if(validatePhoneNumber(this.value.trim())) {
+			  phoneError.style.display = "none";
+			  newPhone.style.border = "none";
+			}
+		  
+		  document.getElementById("EmailAddress").addEventListener('input', function() {
+			if(validateEmail(this.value.trim())) {
+			  emailError.style.display = 'none';
+			  newEmail.style.border = "none";
+			}
+		  });  
+
+		addContact(); 
 });
 
 searchButton.addEventListener('click', () => {
@@ -144,8 +229,9 @@ function addContact()
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/AddContacts.' + extension;
-	
+
 	let xhr = new XMLHttpRequest();
+
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
@@ -158,7 +244,9 @@ function addContact()
 				searchContact();
 			}
 		};
+
 		xhr.send(jsonPayload);
+
 	}
 	catch(err)
 	{
@@ -170,7 +258,6 @@ function addContact()
 function searchContact()
 {
 	let srch = document.getElementById("searchInput").value;
-	
 
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
@@ -420,7 +507,7 @@ function validateFields(newFirstName,newLastName,newPhone,newEmail){
 
 	function validateEmail(email) {
 		var re = /\S+@\S+\.\S+/;
-		return re.test(email);
+		return re.test(email.strip());
 	}
 
 	return ((newFirstName != "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail)))
