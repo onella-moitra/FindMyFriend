@@ -225,6 +225,16 @@ input[type=tel]::placeholder{
     text-align: center;
     color: #008B47;
 }
+
+input[type=tel]::placeholder:hover{
+    text-align: center;
+    color: #008B47;
+}
+
+input[type=tel]{
+    text-align: center;
+    color: black;
+}
 .no-background {
     background-color: transparent;
     border: none;
