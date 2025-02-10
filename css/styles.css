@@ -73,7 +73,6 @@ input[type="email"]:hover::placeholder {
     border: 1px solid #008B47;
     border-radius: 5px;
     padding: 5px;
-    background-color: black;
 }
 
 
@@ -203,65 +202,24 @@ a.link:hover, #termsLink:hover {
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    justify-content: center;
-    z-index: 1; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Dimmed background */
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered horizontally */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: black;
+    margin: 15% auto; 
     padding: 20px;
-    border: 1px solid #888;
-    width: 50%; /* Adjust as needed (e.g., 80%, 60%, or a fixed pixel value) */
-    max-width: 600px; /* Optional: Set a maximum width */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a shadow */
-    border-radius: 5px; /* Optional: Rounded corners */
-  }
-  
-  /* Style the buttons inside the modal */
-  .modal-content button {
-      margin: 10px; /* Add some spacing around buttons */
-      padding: 8px 16px; /* Adjust padding as needed */
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-  }
-  
-  #confirmDelete {
-      background-color: #4CAF50; /* Green */
-      color: white;
-  }
-  
-  #cancelDelete {
-      background-color: #f44336; /* Red */
-      color: white;
-  }
-
-/* Style the buttons inside the modal */
-.modal-content button {
-    margin: 10px; /* Add some spacing around buttons */
-    padding: 8px 16px; /* Adjust padding as needed */
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#confirmDelete {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
-
-#cancelDelete {
-    background-color: #f44336; /* Red */
-    color: white;
+    border: 1px solid white;
+    width: 80%; 
 }
 
 .close {
@@ -275,11 +233,13 @@ a.link:hover, #termsLink:hover {
 
 .close:hover,
 .close:focus, .modal-content:hover {
+    color: white;
+    text-decoration: none;
     cursor: pointer;
 }
 
 .error-message {
-    display: none; 
+    display: none;
     color: white;
 }
 
@@ -349,43 +309,9 @@ input[type="checkbox"]:checked {
     opacity: 50%;
 }
 
-.buttonContainer {
-    display: flex;
-    justify-content: center; /* Center buttons in the table */
-    align-items: center;
-    row-gap: 10px; /* Space between buttons */
-}
-
-.buttonContainer button {
-    background-color: whitesmoke !important;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 40px; 
-    height: 40px;
-    cursor: pointer;
-    border-color: white;
-    transition: 0.3s;
-}
-
-.buttonContainer button:hover {
-    color: black;
-}
-
-.deleteButton {
-    color: red !important;
-    margin-right: 10px;
-}
-.editButton {
-    color: blue;
-}
-
-.saveButton {
-    color: green;
-}
-
 #loginButton, #registerButton, 
 #searchButton, #logoutButton, 
-#addButton {
+#addButton, #deletebutton{
 
     background-color: black;
     color: #008B47;
@@ -395,7 +321,8 @@ input[type="checkbox"]:checked {
 
 #loginButton:hover, #registerButton:hover, 
 #searchButton:hover,#logoutButton:hover, 
-#addButton:hover {
+#addButton:hover, #deleteButton:hover, 
+#openAddContactButton:hover, #openSearchButton:hover {
     background-color: white;
     color: #008B47;
     border: solid;
@@ -404,13 +331,14 @@ input[type="checkbox"]:checked {
 
 #loginButton:active, #registerButton:active, 
 #searchButton:active, #logoutButton:active, 
-#addButton:active, #searchButton:active, 
-#openAddContactButton:active {
+#addButton:active, #deleteButton:active, 
+#searchButton:active, #openAddContactButton:active {
     opacity: 0.7;
 }
 
 #addButton {
-    align-self: center;
+    display: flex;
+    justify-content: center;
 }
 
 #searchButton, #openAddContactButton {
@@ -420,10 +348,6 @@ input[type="checkbox"]:checked {
     border-color: black;
 }
 
-#searchButton:hover, #oppenAddContactButton:hover {
-    background-color: white;
-    color: #008B47;
-}
 .col-md-12{
     flex: 1;
     justify-content: space-between;
@@ -435,7 +359,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    transition: background-color 1s ease;
 } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 .container{
@@ -521,6 +444,18 @@ input[type="email"]{
     color: white;
 }
 
+#userName{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#logoutButton{
+    width: 20%;
+    margin-left: 40%;
+}
+
 select{
     width: 30%;
     margin-left: 35%;
@@ -543,15 +478,4 @@ select{
     margin-bottom: 1%;
     font-family: 'Ubuntu', sans-serif;
     color: #008B47;
-}
-
-.edit-input {
-    height: 30px;
-    box-sizing: border-box; /* Ensures padding/border don’t increase total width */
-    max-width: 100px; 
-    text-align: left;
-}
-
-.edit-input:active {
-    border-color: #008B47;
 }
