@@ -182,14 +182,14 @@ function readCookie()
 	}
 }
 
-function doLogout()
-{
+	function doLogout()
+	{
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
-}
+	}
 
 function addContact()
 {
@@ -307,7 +307,7 @@ function searchContact()
 
 					// Add delete button to each row
 					const actionCell = row.insertCell(); // Create a new cell for the button
-					actionCell.classList.add(actionCell);
+					actionCell.classList.add("actionCell");
 					const buttonContainer = document.createElement("div");
 					
 					const deleteButton = document.createElement("button");
