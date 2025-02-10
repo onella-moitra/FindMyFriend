@@ -80,7 +80,7 @@
 }
 
 .search-table {
-    width: 100%;
+    width: 50vw;
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     border: 1px solid #008B47; 
@@ -98,7 +98,7 @@
 }
 
 .search-table .actionCell {
-    width: 50%;
+    width: 60px;
 }
 
 .search-table thead th {

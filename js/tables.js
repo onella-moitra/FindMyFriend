@@ -220,7 +220,7 @@ function searchContact()
 
 					// Add delete button to each row
 					const actionCell = row.insertCell(); // Create a new cell for the button
-					actionCell.style.width= "50%";
+					actionCell.classList.add(actionCell);
 					const buttonContainer = document.createElement("div");
 					
 					const deleteButton = document.createElement("button");
@@ -262,6 +262,8 @@ function searchContact()
 						row.querySelector(".saveButton").style.display = "none";
 						saveRow(contact.ID, row);
 					});
+
+					console.log("created action cell");
 
 					buttonContainer.appendChild(deleteButton);
 					buttonContainer.appendChild(editButton);
@@ -328,15 +330,12 @@ function saveRow(ID, row){
 	let newEmail = row.children[3].querySelector("input").value;
 
 	//If contact is valid
-	if(!validateFields(newFirstName, newLastName, newPhone, newEmail)){
-		console.log("invalid fields");
-		contactSearchResult.style.color = "red";
-		contactSearchResult.innerHTML = "Invalid fields!";
-		return;
-	}
-
-	//If contact does not exist
-	if(!checkExists(newFirstName, newLastName, newPhone, newEmail)) { return }
+	// if(!validateFields(newFirstName, newLastName, newPhone, newEmail)){
+	// 	console.log("invalid fields");
+	// 	contactSearchResult.style.color = "red";
+	// 	contactSearchResult.innerHTML = "Invalid fields!";
+	// 	return;
+	// }
 
 	//rendering value to the textbox
 	row.children[0].innerHTML = newFirstName;
