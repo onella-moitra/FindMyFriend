@@ -73,6 +73,7 @@ input[type="email"]:hover::placeholder {
     border: 1px solid #008B47;
     border-radius: 5px;
     padding: 5px;
+    background-color: black;
 }
 
 
@@ -81,7 +82,7 @@ input[type="email"]:hover::placeholder {
     outline: none;
     flex-grow: 1;
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 
 .wrapper {
@@ -215,11 +216,41 @@ a.link:hover, #termsLink:hover {
 }
 
 .modal-content {
-    background-color: black;
-    margin: 15% auto; 
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered horizontally */
     padding: 20px;
-    border: 1px solid white;
-    width: 80%; 
+    border: 1px solid #888;
+    width: 50%; /* Adjust as needed (e.g., 80%, 60%, or a fixed pixel value) */
+    max-width: 600px; /* Optional: Set a maximum width */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a shadow */
+    border-radius: 5px; /* Optional: Rounded corners */
+  }
+  
+  #confirmDelete {
+      background-color: #4CAF50; /* Green */
+      color: white;
+  }
+  
+  #cancelDelete {
+      background-color: #f44336; /* Red */
+      color: white;
+  }
+/* Style the buttons inside the modal */
+.modal-content button {
+    margin: 10px; /* Add some spacing around buttons */
+    padding: 8px 16px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#confirmDelete {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+#cancelDelete {
+    background-color: #f44336; /* Red */
+    color: white;
 }
 
 .close {
@@ -308,6 +339,35 @@ input[type="checkbox"]:checked {
     color: #FFFFFF;
     opacity: 50%;
 }
+.buttonContainer {
+    display: flex;
+    justify-content: center; /* Center buttons in the table */
+    align-items: center;
+    row-gap: 10px; /* Space between buttons */
+}
+.buttonContainer button {
+    background-color: whitesmoke !important;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40px; 
+    height: 40px;
+    cursor: pointer;
+    border-color: white;
+    transition: 0.3s;
+}
+.buttonContainer button:hover {
+    color: black;
+}
+.deleteButton {
+    color: red !important;
+    margin-right: 10px;
+}
+.editButton {
+    color: blue;
+}
+.saveButton {
+    color: green;
+}
 
 #loginButton, #registerButton, 
 #searchButton, #logoutButton, 
@@ -359,6 +419,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
+    transition: background-color 1s ease;
 } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 .container{
@@ -368,6 +429,16 @@ body {
 
 input {
     font-family: sans-serif;                
+}
+
+.edit-input {
+    height: 30px;
+    box-sizing: border-box; /* Ensures padding/border don’t increase total width */
+    max-width: 100px; 
+    text-align: left;
+}
+.edit-input:active {
+    border-color: #008B47;
 }
 
 .submitButton{
