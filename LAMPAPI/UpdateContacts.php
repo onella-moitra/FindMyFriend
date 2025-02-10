@@ -22,7 +22,7 @@
 
 			$stmt->close();
 			$conn->close();
-			returnWithError("");
+			returnWithError($contactId, $newFirst, $newLast);
 		}
 
 	function getRequestInfo()
@@ -36,9 +36,15 @@
 		echo $obj;
 	}
 
+	function returnWithInfo( $id, $first, $last )
+	{
+		$retValue = '{"contactId":' . $id . ',"firstName":"' . $first . '","lastName":"' . $last . '","error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
+
 	function returnWithError( $err )
 	{
-		$retValue = '{"contactId":' . $contactId . ',"firstName":"' . $newFirst . '","lastName":"' . $newFirst . '","error":"' . $err . '"}';
+		$retValue = '{"contactId":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
