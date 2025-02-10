@@ -19,6 +19,30 @@ const cancelButton = document.getElementById('cancelDelete');
 const contactSearchResult = document.getElementById("contactSearchResult");
 let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
+const newFirstName = document.getElementById("FirstName");
+const firstNameError = document.getElementById("newFirstNameError");
+
+const newLastName = document.getElementById("LastName");
+const lastNameError = document.getElementById("newLastNameError");
+
+const newPhone = document.getElementById("PhoneNumber");
+const phoneError = document.getElementById("phoneNumberError");
+
+const newEmail = document.getElementById("EmailAddress");
+const emailError = document.getElementById("emailAddressError");
+
+const addForm = document.getElementById("addContactForm");
+
+function validatePhoneNumber(phoneNumber) {
+	const phonePattern = /^\d+$/;
+	return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
+}
+
+function validateEmail(email) {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailPattern.test(email.trim());
+}
+
 myButton.addEventListener('click', () => {
 	console.log("Click");
     doLogout(); 
@@ -29,29 +53,6 @@ const addButton = document.getElementById("addButton");
 addButton.addEventListener('click', (event) => {
 	event.preventDefault();
 	console.log("Click");
-	const newFirstName = document.getElementById("FirstName");
-	const firstNameError = document.getElementById("newFirstNameError");
-
-	const newLastName = document.getElementById("LastName");
-	const lastNameError = document.getElementById("newLastNameError");
-
-	const newPhone = document.getElementById("PhoneNumber");
-	const phoneError = document.getElementById("phoneNumberError");
-
-	const newEmail = document.getElementById("EmailAddress");
-	const emailError = document.getElementById("emailAddressError");
-
-	const addForm = document.getElementById("addContactForm");
-
-	function validatePhoneNumber(phoneNumber) {
-		const phonePattern = /^\d+$/;
-		return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
-	}
-
-	function validateEmail(email) {
-		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailPattern.test(email.trim());
-	}
 		
 		let isValid = true;
 
@@ -84,38 +85,38 @@ addButton.addEventListener('click', (event) => {
 		if (!isValid) {
 			return;
 		}
+		else {addContact();}
 
-		});
+	});
 
-		document.getElementById("FirstName").addEventListener('input', function() {
-			if(this.value.trim() !== "") {
-				firstNameError.style.display = "none";
-				newFirstName.style.border = "none";
-			}
-		  });
+	document.getElementById("FirstName").addEventListener('input', function() {
+		if(this.value.trim() !== "") {
+			firstNameError.style.display = "none";
+			newFirstName.style.border = "none";
+		}
+	});
 		  
-		  document.getElementById("LastName").addEventListener('input', function() {
-			if(this.value.trim() !== "") {
-			  lastNameError.style.display = "none";
-			  newLastName.style.border = "none";
-			}
-		  });
+	document.getElementById("LastName").addEventListener('input', function() {
+		if(this.value.trim() !== "") {
+			lastNameError.style.display = "none";
+			newLastName.style.border = "none";
+		}
+	});
 
-		  document.getElementById("PhoneNumber").addEventListener('input', function() {
-			if(validatePhoneNumber(this.value.trim())) {
-			  phoneError.style.display = "none";
-			  newPhone.style.border = "none";
-			}
+	document.getElementById("PhoneNumber").addEventListener('input', function() {
+		if(validatePhoneNumber(this.value.trim())) {
+			phoneError.style.display = "none";
+			newPhone.style.border = "none";
+		}
+	});
 		  
-		  document.getElementById("EmailAddress").addEventListener('input', function() {
-			if(validateEmail(this.value.trim())) {
-			  emailError.style.display = 'none';
-			  newEmail.style.border = "none";
-			}
-		  });  
+	document.getElementById("EmailAddress").addEventListener('input', function() {
+		if(validateEmail(this.value.trim())) {
+			emailError.style.display = 'none';
+			newEmail.style.border = "none";
+		}
+	});  
 
-		addContact(); 
-});
 
 searchButton.addEventListener('click', () => {
 	searchContact();
@@ -503,40 +504,12 @@ window.addEventListener('click', (event) => {
     }
 })
 
-function validateFields(newFirstName,newLastName,newPhone,newEmail){
+/*function validateFields(newFirstName,newLastName,newPhone,newEmail){
 
 	function validateEmail(email) {
 		var re = /\S+@\S+\.\S+/;
 		return re.test(email.strip());
 	}
 
-	return ((newFirstName != "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail)))
-}
-
-function checkExists(){
-
-	let srch = document.getElementById("searchInput").value;
-	
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/SearchContacts.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				xhr.send(jsonPayload);
-				return true;
-			}
-		}
-	}	catch(err)
-	{
-		document.getElementById("contactSearchResult").innerHTML = err.message;
-	}
-}		
+	return ((newFirstName !== "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail.value)))
+}*/
