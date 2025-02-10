@@ -22,7 +22,7 @@
 
 			$stmt->close();
 			$conn->close();
-			returnWithError($contactId, $newFirst, $newLast);
+			returnWithInfo($contactId, $newFirst, $newLast);
 		}
 
 	function getRequestInfo()
