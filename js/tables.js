@@ -307,6 +307,7 @@ function searchContact()
 
 					// Add delete button to each row
 					const actionCell = row.insertCell(); // Create a new cell for the button
+					actionCell.classList.add(actionCell);
 					const buttonContainer = document.createElement("div");
 					
 					const deleteButton = document.createElement("button");
@@ -346,8 +347,10 @@ function searchContact()
 						
 						row.querySelector(".editButton").style.display = "inline-block";
 						row.querySelector(".saveButton").style.display = "none";
-						saveRow(contactToEdit, row);
+						saveRow(contact.ID, row);
 					});
+
+					console.log("created action cell");
 
 					buttonContainer.appendChild(deleteButton);
 					buttonContainer.appendChild(editButton);
@@ -397,21 +400,23 @@ function editRow(row){
 	let phone = row.children[2];
 	let email = row.children[3];
 
-	firstName.innerHTML = `<input type="text" value="${firstName.textContent}" class="edit-input">`;
-	lastName.innerHTML = `<input type="text" value="${lastName.textContent}" class="edit-input">`;
-	phone.innerHTML = `<input type="text" value="${phone.textContent}" class="edit-input">`;
-	email.innerHTML = `<input type="text" value="${email.textContent}" class="edit-input">`;
+	firstName.innerHTML = `<input type="text" value="${firstName.textContent}">`;
+	lastName.innerHTML = `<input type="text" value="${lastName.textContent}">`;
+	phone.innerHTML = `<input type="text" value="${phone.textContent}">`;
+	email.innerHTML = `<input type="text" value="${email.textContent}">`;
 }
 
 function saveRow(ID, row){
+
+	console.log("saving the row now");
+	console.log(ID, row);
 
 	let newFirstName = row.children[0].querySelector("input").value;
 	let newLastName = row.children[1].querySelector("input").value;
 	let newPhone = row.children[2].querySelector("input").value;
 	let newEmail = row.children[3].querySelector("input").value;
 
-	// console.log(newFirstName, newLastName, newPhone, newEmail);
-
+	//If contact is valid
 	// if(!validateFields(newFirstName, newLastName, newPhone, newEmail)){
 	// 	console.log("invalid fields");
 	// 	contactSearchResult.style.color = "red";
@@ -419,16 +424,19 @@ function saveRow(ID, row){
 	// 	return;
 	// }
 
+	//rendering value to the textbox
 	row.children[0].innerHTML = newFirstName;
 	row.children[1].innerHTML = newLastName;
 	row.children[2].innerHTML = newPhone;
 	row.children[3].innerHTML = newEmail;
 
+	//API call
+
 	let tmp = { newFirstName:newFirstName, newLastName:newLastName, phoneNumber:newPhone, emailAddress:newEmail, contactId:ID};
     jsonPayload = JSON.stringify( tmp );
+	console.log(jsonPayload);
 
     let url = urlBase + '/UpdateContacts.' + extension;
-
     let xhr = new XMLHttpRequest();
     xhr.open("POST",url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -502,5 +510,33 @@ function validateFields(newFirstName,newLastName,newPhone,newEmail){
 		return re.test(email.strip());
 	}
 
-	return ((newFirstName !== "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail.value)))
+	return ((newFirstName != "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail)))
 }
+
+function checkExists(){
+
+	let srch = document.getElementById("searchInput").value;
+	
+	let tmp = {search:srch,userId:userId};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchContacts.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				xhr.send(jsonPayload);
+				return true;
+			}
+		}
+	}	catch(err)
+	{
+		document.getElementById("contactSearchResult").innerHTML = err.message;
+	}
+}		

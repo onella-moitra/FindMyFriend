@@ -22,7 +22,7 @@
 
 			$stmt->close();
 			$conn->close();
-			returnWithError("");
+			returnWithInfo($contactId, $newFirst, $newLast);
 		}
 
 	function getRequestInfo()
@@ -34,6 +34,12 @@
 	{
 		header('Content-type: application/json');
 		echo $obj;
+	}
+
+	function returnWithInfo( $id, $first, $last )
+	{
+		$retValue = '{"contactId":' . $id . ',"firstName":"' . $first . '","lastName":"' . $last . '","error":""}';
+		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithError( $err )
