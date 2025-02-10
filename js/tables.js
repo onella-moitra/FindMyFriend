@@ -308,6 +308,10 @@ function searchContact()
 
 					// Add delete button to each row
 					const actionCell = row.insertCell(); // Create a new cell for the button
+<<<<<<< HEAD
+=======
+					actionCell.classList.add("actionCell");
+>>>>>>> 5948ed0 (easter egg added)
 					const buttonContainer = document.createElement("div");
 					
 					const deleteButton = document.createElement("button");
