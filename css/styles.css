@@ -431,16 +431,6 @@ input {
     font-family: sans-serif;                
 }
 
-.edit-input {
-    height: 30px;
-    box-sizing: border-box; /* Ensures padding/border don’t increase total width */
-    max-width: 100px; 
-    text-align: left;
-}
-.edit-input:active {
-    border-color: #008B47;
-}
-
 .submitButton{
     align-self: center;
 }

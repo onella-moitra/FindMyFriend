@@ -310,10 +310,10 @@ function editRow(row){
 	let phone = row.children[2];
 	let email = row.children[3];
 
-	firstName.innerHTML = `<input type="text" value="${firstName.textContent}" class="edit-input">`;
-	lastName.innerHTML = `<input type="text" value="${lastName.textContent}" class="edit-input">`;
-	phone.innerHTML = `<input type="text" value="${phone.textContent}" class="edit-input">`;
-	email.innerHTML = `<input type="text" value="${email.textContent}" class="edit-input">`;
+	firstName.innerHTML = `<input type="text" value="${firstName.textContent}">`;
+	lastName.innerHTML = `<input type="text" value="${lastName.textContent}">`;
+	phone.innerHTML = `<input type="text" value="${phone.textContent}">`;
+	email.innerHTML = `<input type="text" value="${email.textContent}">`;
 }
 
 function saveRow(ID, row){
