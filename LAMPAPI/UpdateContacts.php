@@ -38,7 +38,14 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"contactId":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		if ($err == "")
+		{
+			$retValue = '{"contactId":' . $contactId . ',"firstName":"' . $newFirst . '","' . $newLast . '":"","error":"' . $err . '"}';
+		}
+		else
+		{
+			$retValue = '{"contactId":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		}
 		sendResultInfoAsJson( $retValue );
 	}
 
