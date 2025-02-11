@@ -215,7 +215,7 @@ a.link:hover, #termsLink:hover {
 }
 
 .modal-content {
-    background-color: black;
+    background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered horizontally */
     padding: 20px;
     border: 1px solid #888;

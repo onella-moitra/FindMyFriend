@@ -19,30 +19,6 @@ const cancelButton = document.getElementById('cancelDelete');
 const contactSearchResult = document.getElementById("contactSearchResult");
 let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
-const newFirstName = document.getElementById("FirstName");
-const firstNameError = document.getElementById("newFirstNameError");
-
-const newLastName = document.getElementById("LastName");
-const lastNameError = document.getElementById("newLastNameError");
-
-const newPhone = document.getElementById("PhoneNumber");
-const phoneError = document.getElementById("phoneNumberError");
-
-const newEmail = document.getElementById("EmailAddress");
-const emailError = document.getElementById("emailAddressError");
-
-const addForm = document.getElementById("addContactForm");
-
-function validatePhoneNumber(phoneNumber) {
-	const phonePattern = /^\d+$/;
-	return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
-}
-
-function validateEmail(email) {
-	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	return emailPattern.test(email.trim());
-}
-
 myButton.addEventListener('click', () => {
 	console.log("Click");
     doLogout(); 
@@ -53,6 +29,29 @@ const addButton = document.getElementById("addButton");
 addButton.addEventListener('click', (event) => {
 	event.preventDefault();
 	console.log("Click");
+	const newFirstName = document.getElementById("FirstName");
+	const firstNameError = document.getElementById("newFirstNameError");
+
+	const newLastName = document.getElementById("LastName");
+	const lastNameError = document.getElementById("newLastNameError");
+
+	const newPhone = document.getElementById("PhoneNumber");
+	const phoneError = document.getElementById("phoneNumberError");
+
+	const newEmail = document.getElementById("EmailAddress");
+	const emailError = document.getElementById("emailAddressError");
+
+	const addForm = document.getElementById("addContactForm");
+
+	function validatePhoneNumber(phoneNumber) {
+		const phonePattern = /^\d+$/;
+		return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
+	}
+
+	function validateEmail(email) {
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailPattern.test(email.trim());
+	}
 		
 		let isValid = true;
 
@@ -85,38 +84,38 @@ addButton.addEventListener('click', (event) => {
 		if (!isValid) {
 			return;
 		}
-		else {addContact();}
 
-	});
+		});
 
-	document.getElementById("FirstName").addEventListener('input', function() {
-		if(this.value.trim() !== "") {
-			firstNameError.style.display = "none";
-			newFirstName.style.border = "none";
-		}
-	});
+		document.getElementById("FirstName").addEventListener('input', function() {
+			if(this.value.trim() !== "") {
+				firstNameError.style.display = "none";
+				newFirstName.style.border = "none";
+			}
+		  });
 		  
-	document.getElementById("LastName").addEventListener('input', function() {
-		if(this.value.trim() !== "") {
-			lastNameError.style.display = "none";
-			newLastName.style.border = "none";
-		}
-	});
+		  document.getElementById("LastName").addEventListener('input', function() {
+			if(this.value.trim() !== "") {
+			  lastNameError.style.display = "none";
+			  newLastName.style.border = "none";
+			}
+		  });
 
-	document.getElementById("PhoneNumber").addEventListener('input', function() {
-		if(validatePhoneNumber(this.value.trim())) {
-			phoneError.style.display = "none";
-			newPhone.style.border = "none";
-		}
-	});
+		  document.getElementById("PhoneNumber").addEventListener('input', function() {
+			if(validatePhoneNumber(this.value.trim())) {
+			  phoneError.style.display = "none";
+			  newPhone.style.border = "none";
+			}
 		  
-	document.getElementById("EmailAddress").addEventListener('input', function() {
-		if(validateEmail(this.value.trim())) {
-			emailError.style.display = 'none';
-			newEmail.style.border = "none";
-		}
-	});  
+		  document.getElementById("EmailAddress").addEventListener('input', function() {
+			if(validateEmail(this.value.trim())) {
+			  emailError.style.display = 'none';
+			  newEmail.style.border = "none";
+			}
+		  });  
 
+		addContact(); 
+});
 
 searchButton.addEventListener('click', () => {
 	searchContact();
@@ -201,7 +200,9 @@ function addContact()
 
 	//Easter Egg
 	if(firstName.localeCompare("Rick") == 0 && lastName.localeCompare("Leinecker")==0){
+
 		window.location.href = "error.html";
+		return;
 	}
 
 	document.getElementById("contactAddResult").innerHTML = "";
@@ -288,6 +289,7 @@ function searchContact()
 
 					// Add delete button to each row
 					const actionCell = row.insertCell(); // Create a new cell for the button
+					actionCell.classList.add("actionCell");
 					const buttonContainer = document.createElement("div");
 					
 					const deleteButton = document.createElement("button");
@@ -329,6 +331,8 @@ function searchContact()
 						row.querySelector(".saveButton").style.display = "none";
 						saveRow(contact.ID, row);
 					});
+
+					console.log("created action cell");
 
 					buttonContainer.appendChild(deleteButton);
 					buttonContainer.appendChild(editButton);
@@ -381,18 +385,21 @@ function editRow(row){
 	firstName.innerHTML = `<input type="text" value="${firstName.textContent}">`;
 	lastName.innerHTML = `<input type="text" value="${lastName.textContent}">`;
 	phone.innerHTML = `<input type="text" value="${phone.textContent}">`;
-	email.innerHTML = `<input type="text" value="${email.textContent}"">`;
+	email.innerHTML = `<input type="text" value="${email.textContent}">`;
+
 }
 
 function saveRow(ID, row){
+
+	console.log("saving the row now");
+	console.log(ID, row);
 
 	let newFirstName = row.children[0].querySelector("input").value;
 	let newLastName = row.children[1].querySelector("input").value;
 	let newPhone = row.children[2].querySelector("input").value;
 	let newEmail = row.children[3].querySelector("input").value;
 
-	// console.log(newFirstName, newLastName, newPhone, newEmail);
-
+	//If contact is valid
 	// if(!validateFields(newFirstName, newLastName, newPhone, newEmail)){
 	// 	console.log("invalid fields");
 	// 	contactSearchResult.style.color = "red";
@@ -400,16 +407,19 @@ function saveRow(ID, row){
 	// 	return;
 	// }
 
+	//rendering value to the textbox
 	row.children[0].innerHTML = newFirstName;
 	row.children[1].innerHTML = newLastName;
 	row.children[2].innerHTML = newPhone;
 	row.children[3].innerHTML = newEmail;
 
+	//API call
+
 	let tmp = { newFirstName:newFirstName, newLastName:newLastName, phoneNumber:newPhone, emailAddress:newEmail, contactId:ID};
     jsonPayload = JSON.stringify( tmp );
+	console.log(jsonPayload);
 
     let url = urlBase + '/UpdateContacts.' + extension;
-
     let xhr = new XMLHttpRequest();
     xhr.open("POST",url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -476,24 +486,25 @@ window.addEventListener('click', (event) => {
     }
 })
 
-/*function validateFields(newFirstName,newLastName,newPhone,newEmail){
-	if(newFirstName === "")
-		{
-		return false;
+function validateFields(newFirstName,newLastName,newPhone,newEmail){
+
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email.strip());
 	}
-	return true;
-	
-}*/
+
+	return ((newFirstName != "") || (newLastName != "") || (newPhone.length == 10 && !isNaN(newPhone)) || (validateEmail(newEmail)))
+}
 
 function checkExists(){
 
 	let srch = document.getElementById("searchInput").value;
-
+	
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/SearchContacts.' + extension;
-
+	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
