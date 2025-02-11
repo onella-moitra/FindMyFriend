@@ -67,7 +67,7 @@ input[type="email"]:hover::placeholder {
 
 .search-bar {
     position: absolute;
-	top: 150px;
+	top: 120px;
     display: flex;
     align-items: top;
     border: 1px solid #008B47;
@@ -83,6 +83,21 @@ input[type="email"]:hover::placeholder {
     flex-grow: 1;
     padding: 10px;
     margin-right: 10px; 
+}
+
+.results-container{
+    position: absolute;
+    top: 205px;
+    text-align: center;
+    padding-top: 5px;
+    color: #008B47;
+    background-color: black;
+    width: 311px;
+    border: 1px solid #008B47;
+}
+
+#result {
+    color: white;
 }
 
 .wrapper {

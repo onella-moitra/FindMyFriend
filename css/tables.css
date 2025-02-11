@@ -85,7 +85,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     border: 1px solid #008B47; 
     position: right;
-    table-layout: auto;
+    position: absolute;
+    top: 250px;
+    table-layout: fixed;
 }
 
 .search-table th, .search-table td {
@@ -135,7 +137,7 @@
 
 #map {
     width: 100%; /* Adjust as needed */
-    height: 750px; /* Adjust as needed */
+    height: 800px; /* Adjust as needed */
     background-image: url("../images/UCFMAP.png"); /* Replace with your map image */
     background-size: cover;
     position: relative; /* Important for positioning waypoints */
@@ -259,6 +261,7 @@ input[type=tel]{
     text-align: center;
     color: black;
 }
+
 .no-background {
     background-color: transparent;
     border: none;
