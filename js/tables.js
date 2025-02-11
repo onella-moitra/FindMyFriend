@@ -200,7 +200,8 @@ function addContact()
 
 	//Easter Egg
 	if(firstName.localeCompare("Rick") == 0 && lastName.localeCompare("Leinecker")==0){
-        window.location.href = "error.html";
+
+		window.location.href = "error.html";
 		return;
 	}
 
@@ -385,6 +386,7 @@ function editRow(row){
 	lastName.innerHTML = `<input type="text" value="${lastName.textContent}">`;
 	phone.innerHTML = `<input type="text" value="${phone.textContent}">`;
 	email.innerHTML = `<input type="text" value="${email.textContent}">`;
+
 }
 
 function saveRow(ID, row){
