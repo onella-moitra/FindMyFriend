@@ -223,11 +223,30 @@ a.link:hover, #termsLink:hover {
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
+    width: 80%; 
     height: 100%; 
     overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
+}
+
+.fa-circle-xmark {
+    color: red;
+    font-size: 60px;
+    margin-top: 10px;
+    align-self: center;
+}
+
+#confirmationModal .modal-content h1 {
+    text-align: center;
+    color: red;
+}
+
+#confirmationModal .modal-content {
+    background-color: black;
+    color: red;
+    text-align: center;
+    border: 2px solid red;
 }
 
 .modal-content {
@@ -240,15 +259,68 @@ a.link:hover, #termsLink:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a shadow */
     border-radius: 5px; /* Optional: Rounded corners */
   }
+
+  .modal-footer {
+    border-top: 1px solid red !important;
+    display: flex;
+    justify-content: space-between !important; /* Align buttons to the right */
+    gap: 10px; /* Space between buttons */
+}
   
   #confirmDelete {
-      background-color: #4CAF50; /* Green */
+      background-color: green; /* Green */
       color: white;
+      display: inline-block;
+      width: 100px;
+      transition: 0.5s;
+  }
+
+  #confirmDelete:hover {
+      background-color: white; /* Darker green */
+      color: green;
+      border: 2.5px solid green;
+  }
+
+  #confirmDelete:hover::after {
+    content: '\f2ed'; 
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900; /* Specify Font Awesome font weight */
+    font-style: normal; /* Ensure the icon is displayed correctly */
+    opacity: 1;
+  }
+
+  #confirmDelete:active {
+    background-color: green;
+    color: white;
+    opacity: 0.7;
   }
   
   #cancelDelete {
       background-color: #f44336; /* Red */
       color: white;
+      display: inline-block;
+      width: 100px;
+      transition: 0.5s;
+  }
+
+  #cancelDelete:hover {
+      background-color: white; /* Darker red */
+      color: red;
+      border: 2.5px solid red;
+  }
+
+  #cancelDelete:hover::after {
+    content: '\f057'; 
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900; /* Specify Font Awesome font weight */
+    font-style: normal; /* Ensure the icon is displayed correctly */
+    opacity: 1;
+  }
+
+  #cancelDelete:active {
+    background-color: green;
+    color: white;
+    opacity: 0.7;
   }
 /* Style the buttons inside the modal */
 .modal-content button {
@@ -257,10 +329,7 @@ a.link:hover, #termsLink:hover {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-}
-#confirmDelete {
-    background-color: #4CAF50; /* Green */
-    color: white;
+    display: inline-flex;
 }
 
 #cancelDelete {
