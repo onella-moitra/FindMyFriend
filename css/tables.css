@@ -137,7 +137,7 @@
 
 #map {
     width: 100%; /* Adjust as needed */
-    height: 700px; /* Adjust as needed */
+    height: 680px; /* Adjust as needed */
     background-image: url("../images/UCFMAP.png"); /* Replace with your map image */
     background-size: cover;
     position: relative; /* Important for positioning waypoints */
