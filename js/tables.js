@@ -84,7 +84,8 @@ addButton.addEventListener('click', (event) => {
 		if (!isValid) {
 			return;
 		}
-
+		else {
+			addContact();}
 		});
 
 		document.getElementById("FirstName").addEventListener('input', function() {
@@ -106,16 +107,14 @@ addButton.addEventListener('click', (event) => {
 			  phoneError.style.display = "none";
 			  newPhone.style.border = "none";
 			}
+		});
 		  
 		  document.getElementById("EmailAddress").addEventListener('input', function() {
 			if(validateEmail(this.value.trim())) {
 			  emailError.style.display = 'none';
 			  newEmail.style.border = "none";
 			}
-		  });  
-
-		addContact(); 
-});
+		  });   
 
 searchButton.addEventListener('click', () => {
 	searchContact();
