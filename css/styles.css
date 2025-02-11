@@ -66,8 +66,8 @@ input[type="email"]:hover::placeholder {
 }
 
 .search-bar {
-    position: sticky;
-    top: 0;
+    position: absolute;
+	top: 150px;
     display: flex;
     align-items: top;
     border: 1px solid #008B47;
