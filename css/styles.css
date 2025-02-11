@@ -511,7 +511,7 @@ input[type="email"]{
 }
 
 #logoutButton{
-    width: 20%;
+    width: auto;
     margin-left: 40%;
 }
 
