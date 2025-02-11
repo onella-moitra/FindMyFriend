@@ -201,27 +201,7 @@ function addContact()
 
 	//Easter Egg
 	if(firstName.localeCompare("Rick") == 0 && lastName.localeCompare("Leinecker")==0){
-		closePopup();
-		console.log("DANGER");
-		const body = document.body;
-    	const soverlay = document.getElementById('soverlay');
-    	const logoutMessage = document.getElementById('logout-message');
-
-		body.classList.add('glitch');
-        soverlay.classList.add('active');
-        body.classList.add('flash');
-		logoutMessage.style.display = 'block';
-
-        setTimeout(() => {
-            body.classList.remove('glitch');
-            soverlay.classList.remove('active');
-            body.classList.remove('flash');
-            setTimeout(() => {
-                doLogout();
-            }, 3000);
-
-        }, 5000); 
-		return;
+		window.location.href = "error.html";
 	}
 
 	document.getElementById("contactAddResult").innerHTML = "";
@@ -347,7 +327,7 @@ function searchContact()
 						
 						row.querySelector(".editButton").style.display = "inline-block";
 						row.querySelector(".saveButton").style.display = "none";
-						saveRow(contactToEdit, row);
+						saveRow(contact.ID, row);
 					});
 
 					buttonContainer.appendChild(deleteButton);
@@ -398,10 +378,10 @@ function editRow(row){
 	let phone = row.children[2];
 	let email = row.children[3];
 
-	firstName.innerHTML = `<input type="text" value="${firstName.textContent}" class="edit-input">`;
-	lastName.innerHTML = `<input type="text" value="${lastName.textContent}" class="edit-input">`;
-	phone.innerHTML = `<input type="text" value="${phone.textContent}" class="edit-input">`;
-	email.innerHTML = `<input type="text" value="${email.textContent}" class="edit-input">`;
+	firstName.innerHTML = `<input type="text" value="${firstName.textContent}">`;
+	lastName.innerHTML = `<input type="text" value="${lastName.textContent}">`;
+	phone.innerHTML = `<input type="text" value="${phone.textContent}">`;
+	email.innerHTML = `<input type="text" value="${email.textContent}"">`;
 }
 
 function saveRow(ID, row){
