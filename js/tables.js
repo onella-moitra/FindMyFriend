@@ -138,7 +138,7 @@ overlay.addEventListener('click', (event) => {
 
 confirmButton.addEventListener('click', () => {
     deleteContact(contactToDelete); 
-	document.querySelector(".search-table tbody").deleteRow(rowToDelete);
+	searchContact();
     modal.style.display = "none";
     }
 );

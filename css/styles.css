@@ -263,9 +263,7 @@ a.link:hover, #termsLink:hover {
 
 .close:hover,
 .close:focus, .modal-content:hover {
-    color: white;
     text-decoration: none;
-    cursor: pointer;
 }
 
 .error-message {
