@@ -362,8 +362,6 @@ a.link:hover, #termsLink:hover {
     color: green;
     display: flex;
     justify-content: center;
-    font-size: 30px;
-    margin-top: 10px;
     align-self: center;
     position:relative;
 }
