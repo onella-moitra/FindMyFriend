@@ -18,6 +18,7 @@ const confirmButton = document.getElementById('confirmDelete');
 const cancelButton = document.getElementById('cancelDelete');
 const contactSearchResult = document.getElementById("contactSearchResult");
 const resultModal = document.getElementById('resultModal');
+const addModal = document.getElementById('addModal');
 let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
 myButton.addEventListener('click', () => {
@@ -88,7 +89,10 @@ addButton.addEventListener('click', (event) => {
 		else {
 			addContact();
 			addForm.reset();
-			document.getElementById("contactAddResult").innerHTML = "";
+			//document.getElementById("contactAddResult").innerHTML = "";
+			overlay.style.display = "none";
+			addModal.style.display = "block";
+
 		}
 		});
 
@@ -225,7 +229,7 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added!";
+				//document.getElementById("contactAddResult").innerHTML = "Contact has been added!";
 				searchContact();
 			}
 		};
@@ -493,6 +497,9 @@ window.addEventListener('click', (event) => {
     }
 	else if (event.target === resultModal) {
 		resultModal.style.display = 'none';
+	}
+	else if (event.target === addModal) {
+		addModal.style.display = 'none';
 	}	
 })
 

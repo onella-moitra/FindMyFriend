@@ -237,6 +237,14 @@ a.link:hover, #termsLink:hover {
     background-color: rgba(0,0,0,0.4); 
 }
 
+#addModal .modal-content {
+    background-color: #008B47;
+    color: white;
+    text-align: center;
+    border: 2px solid white;
+    width: 20%;
+}
+
 .fa-circle-xmark {
     color: red;
     font-size: 60px;
@@ -266,29 +274,7 @@ a.link:hover, #termsLink:hover {
     border-radius: 5px; /* Optional: Rounded corners */
 }
 
-#resultModal .modal-content {
-    background-color: black;
-    color: green;
-    text-align: center;
-    align-items: center;
-    border: 2px solid green;
-    width: 20%;
-}
-#resultModal .modal-header.border-color {
-    color: transparent!important;
-}
-
-.fa-trash-can {
-    color: green;
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
-    margin-top: 10px;
-    align-self: center;
-    position:relative;
-}
-
-  .modal-footer {
+.modal-footer {
     border-top: 1px solid red !important;
     display: flex;
     justify-content: space-between !important; /* Align buttons to the right */
@@ -360,9 +346,26 @@ a.link:hover, #termsLink:hover {
     display: inline-flex;
 }
 
-#cancelDelete {
-    background-color: #f44336; /* Red */
-    color: white;
+#resultModal .modal-content {
+    background-color: black;
+    color: green;
+    text-align: center;
+    align-items: center;
+    border: 2px solid green;
+    width: 20%;
+}
+#resultModal .modal-header.border-color {
+    color: transparent!important;
+}
+
+.fa-trash-can {
+    color: green;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 10px;
+    align-self: center;
+    position:relative;
 }
 
 .close {
