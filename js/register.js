@@ -219,7 +219,7 @@ function doRegister(firstName, lastName, loginEmail, loginName, loginPassword) {
                 document.getElementById("registerResult").innerHTML = "Account created for ${firstName} ${lastName} with loginName ${loginName}.";
                 document.getElementById('loginResult').style.color = 'green';
 
-                window.location.href = "tables.html";
+                window.location.href = "index.html";
             }
 
             if(this.status===409){
