@@ -123,7 +123,7 @@ border-collapse: collapse;
 
 .search-table input {
     height: 100%;
-    width: 115px;
+    width: 100%;
     box-sizing: border-box; 
     border: 2px solid black;
     border-radius: 5px;
