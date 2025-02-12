@@ -113,13 +113,12 @@
 }
 
 .search-table tbody {
-    background-color: white;
-    color: #008B47;
+    background-color: #FFFFFF;  /* White background */
+    color: #006400;  /* Dark green for better contrast */
 }
 
 .search-table tr {
-    background-color: white;
-}
+    background-color: #F0F0F0}
 
 .search-table input {
     height: 100%;

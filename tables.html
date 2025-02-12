@@ -1,9 +1,10 @@
-<!doctype html lang="en">
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta name="viewport" charset="UTF-8">
-	<title>Home Page</title>
+  <meta name="tables" content="main page for displaying contacts">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	<title>Home Page</title>
 	<script type="text/javascript" src="js/md5.js"></script>
     <link href="css/styles.css" rel="stylesheet">	
     <link href="css/tables.css" rel="stylesheet">
@@ -87,8 +88,8 @@
         <div class="col-md-6">
           <div class="search-bar">
             <input type="text" id = "searchInput" placeholder="Search contact" class="form-control">
-            <button class="btn btn-primary btn-block" id ="searchButton" style="margin-right: 5px;"><i class="fa-solid fa-magnifying-glass-location"></i></button>
-            <button class="btn btn-primary btn-block" id ="openAddContactButton"><i class="fa-solid fa-user-plus"></i></button>
+            <button class="btn btn-primary btn-block" id ="searchButton" style="margin-right: 5px;" aria-label="searchButton"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+            <button class="btn btn-primary btn-block" id ="openAddContactButton" aria-label="openAddContactButton"><i class="fa-solid fa-user-plus"></i></button>
           </div>
         <span id="contactSearchResult"></span>
         </div>

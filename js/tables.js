@@ -292,6 +292,7 @@ function searchContact()
 					
 					const deleteButton = document.createElement("button");
 					deleteButton.classList.add("deleteButton");
+					deleteButton.ariaLabel = "deleteButton";
 					deleteButton.style.color="red";
 					deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
 					// Attach event listener to the delete button (using a closure)
@@ -307,6 +308,7 @@ function searchContact()
 					//Create edit Button
 					const editButton = document.createElement("button");
 					editButton.classList.add("editButton");
+					editButton.ariaLabel = "editButton";
 					editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
 					editButton.addEventListener("click", function() {
 
@@ -320,6 +322,7 @@ function searchContact()
 
 					//Create saveButton
 					const saveButton = document.createElement("button")
+					saveButton.ariaLabel = "saveButton";
 					saveButton.classList.add("saveButton");
 					saveButton.innerHTML = `<i class="fa-solid fa-check"></i>`;
 					saveButton.style.display = "none";
@@ -425,8 +428,8 @@ function saveRow(ID, row){
         xhr.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200)
 			{
-				contactSearchResult.style.color = "white";
-				contactSearchResult.innerHTML = "Contacts updated successfully!";
+				// contactSearchResult.style.color = "white";
+				// contactSearchResult.innerHTML = "Contacts updated successfully!";
 			}
 		};
         xhr.send(jsonPayload);
