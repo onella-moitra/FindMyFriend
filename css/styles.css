@@ -66,9 +66,10 @@ input[type="email"]:hover::placeholder {
 }
 
 .search-bar {
-    position: absolute;
-	top: 140px;
-    right: 300px;
+    margin-top: 38%; /* Adjust as needed */
+    margin-left: 15%;
+    max-height: 90vh; /* Optional: Set maximum height and enable scrolling */
+    overflow-y: auto; /* Optional: Add a scrollbar if the table is too tall*/
     display: flex;
     align-items: top;
     border: 1px solid #008B47;
@@ -513,6 +514,13 @@ body {
 .container{
     justify-content: center;
     align-items: center;
+}
+
+.table-container{
+    display: grid;
+    grid-template-rows: auto 1fr; /* Two rows: auto height for margin, 1fr for table */
+    place-items: center; /* Center horizontally */
+    height: 100vh; /* Or a specific height */
 }
 
 input {

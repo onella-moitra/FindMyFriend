@@ -80,15 +80,16 @@
 }
 
 .search-table {
-    border-collapse: collapse;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    border: 1px solid #008B47; 
-    position: right;
-    position: absolute;
-    top: 250px;
-    right: 10px;
-    table-layout: fixed;
+border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0. 15);
+  border: 1px solid #008B47;
+  table-layout: fixed;
+  width: 80%; /* Or a specific width */
+  margin-top: 3%; /* Adjust as needed */
+  margin-left: 12%;
+  max-height: 90vh; /* Optional: Set maximum height and enable scrolling */
+  overflow-y: auto; /* Optional: Add a scrollbar if the table is too tall*/
 }
   
 
