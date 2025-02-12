@@ -243,16 +243,20 @@ a.link:hover, #termsLink:hover {
     align-self: center;
 }
 
-#confirmationModal .modal-content h1 {
+#confirmationModal .modal-content h1, #resultModal .modal-content h1 {
     text-align: center;
     color: red;
 }
 
-#confirmationModal .modal-content {
+#confirmationModal .modal-content, #resultModal .modal-content {
     background-color: black;
     color: red;
     text-align: center;
     border: 2px solid red;
+}
+
+#resultModal .modal-content {
+    color: white;
 }
 
 .modal-content {

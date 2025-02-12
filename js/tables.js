@@ -85,7 +85,9 @@ addButton.addEventListener('click', (event) => {
 			return;
 		}
 		else {
-			addContact();}
+			addContact();
+			addForm.reset();
+		}
 		});
 
 		document.getElementById("FirstName").addEventListener('input', function() {
