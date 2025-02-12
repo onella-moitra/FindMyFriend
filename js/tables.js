@@ -17,6 +17,7 @@ const modal = document.getElementById('confirmationModal');
 const confirmButton = document.getElementById('confirmDelete');
 const cancelButton = document.getElementById('cancelDelete');
 const contactSearchResult = document.getElementById("contactSearchResult");
+const resultModal = document.getElementById('resultModal');
 let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
 myButton.addEventListener('click', () => {
@@ -141,8 +142,15 @@ overlay.addEventListener('click', (event) => {
 confirmButton.addEventListener('click', () => {
     deleteContact(contactToDelete); 
     modal.style.display = "none";
+	resultModal.style.display = "block";
     }
 );
+
+window.addEventListener('click', function(event) {
+	if (event.target === resultModal) {
+		resultModal.style.display = 'none';
+	}
+});
 
 cancelButton.addEventListener('click', () => {
     modal.style.display = "none"; // Hide the modal
@@ -459,8 +467,8 @@ function deleteContact(ID)
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				contactSearchResult.style.color = "green";
-				document.getElementById("contactSearchResult").innerHTML = "Contacts have been deleted successfully!";
+				//contactSearchResult.style.color = "green";
+				//document.getElementById("contactSearchResult").innerHTML = "Contacts have been deleted successfully!";
 				searchContact();
 			}
 		};

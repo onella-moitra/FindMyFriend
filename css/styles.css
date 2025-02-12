@@ -244,32 +244,49 @@ a.link:hover, #termsLink:hover {
     align-self: center;
 }
 
-#confirmationModal .modal-content h1, #resultModal .modal-content h1 {
+#confirmationModal .modal-content h1 {
     text-align: center;
     color: red;
 }
 
-#confirmationModal .modal-content, #resultModal .modal-content {
+#confirmationModal .modal-content{
     background-color: black;
     color: red;
     text-align: center;
     border: 2px solid red;
 }
 
-#resultModal .modal-content {
-    color: white;
-}
-
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered horizontally */
     padding: 20px;
-    border: 1px solid #888;
     width: 50%; /* Adjust as needed (e.g., 80%, 60%, or a fixed pixel value) */
     max-width: 600px; /* Optional: Set a maximum width */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a shadow */
     border-radius: 5px; /* Optional: Rounded corners */
-  }
+}
+
+#resultModal .modal-content {
+    background-color: black;
+    color: green;
+    text-align: center;
+    align-items: center;
+    border: 2px solid green;
+    width: 20%;
+}
+#resultModal .modal-header.border-color {
+    color: transparent!important;
+}
+
+.fa-trash-can {
+    color: green;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 10px;
+    align-self: center;
+    position:relative;
+}
 
   .modal-footer {
     border-top: 1px solid red !important;
