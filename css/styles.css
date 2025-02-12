@@ -358,7 +358,7 @@ a.link:hover, #termsLink:hover {
 }
 
 .fa-trash-can {
-    color: green;
+    color: red;
     display: flex;
     justify-content: center;
     align-self: center;
