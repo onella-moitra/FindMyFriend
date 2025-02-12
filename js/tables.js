@@ -87,6 +87,7 @@ addButton.addEventListener('click', (event) => {
 		else {
 			addContact();
 			addForm.reset();
+			document.getElementById("contactAddResult").innerHTML = "";
 		}
 		});
 
