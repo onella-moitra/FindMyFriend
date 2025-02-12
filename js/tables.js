@@ -21,6 +21,30 @@ const resultModal = document.getElementById('resultModal');
 const addModal = document.getElementById('addModal');
 let rowToDelete, contactToDelete, rowToEdit, contactToEdit;
 
+const newFirstName = document.getElementById("FirstName");
+const firstNameError = document.getElementById("newFirstNameError");
+
+const newLastName = document.getElementById("LastName");
+const lastNameError = document.getElementById("newLastNameError");
+
+const newPhone = document.getElementById("PhoneNumber");
+const phoneError = document.getElementById("phoneNumberError");
+
+const newEmail = document.getElementById("EmailAddress");
+const emailError = document.getElementById("emailAddressError");
+
+const addForm = document.getElementById("addContactForm");
+
+function validatePhoneNumber(phoneNumber) {
+	const phonePattern = /^\d+$/;
+	return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
+}
+
+function validateEmail(email) {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailPattern.test(email.trim());
+}
+
 myButton.addEventListener('click', () => {
 	console.log("Click");
     doLogout(); 
@@ -31,29 +55,6 @@ const addButton = document.getElementById("addButton");
 addButton.addEventListener('click', (event) => {
 	event.preventDefault();
 	console.log("Click");
-	const newFirstName = document.getElementById("FirstName");
-	const firstNameError = document.getElementById("newFirstNameError");
-
-	const newLastName = document.getElementById("LastName");
-	const lastNameError = document.getElementById("newLastNameError");
-
-	const newPhone = document.getElementById("PhoneNumber");
-	const phoneError = document.getElementById("phoneNumberError");
-
-	const newEmail = document.getElementById("EmailAddress");
-	const emailError = document.getElementById("emailAddressError");
-
-	const addForm = document.getElementById("addContactForm");
-
-	function validatePhoneNumber(phoneNumber) {
-		const phonePattern = /^\d+$/;
-		return phonePattern.test(phoneNumber.trim()) && phoneNumber.trim().length === 10;
-	}
-
-	function validateEmail(email) {
-		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailPattern.test(email.trim());
-	}
 		
 		let isValid = true;
 
@@ -85,6 +86,7 @@ addButton.addEventListener('click', (event) => {
 
 		if (!isValid) {
 			return;
+
 		}
 		else {
 			addContact();
@@ -94,7 +96,7 @@ addButton.addEventListener('click', (event) => {
 			addModal.style.display = "block";
 
 		}
-		});
+	});
 
 		document.getElementById("FirstName").addEventListener('input', function() {
 			if(this.value.trim() !== "") {
