@@ -387,12 +387,6 @@ a.link:hover, #termsLink:hover {
     color: white;
 }
 
-input[type="checkbox"] {
-    /*border: solid;
-    border-width: 2px;
-    border-color: black;*/
-}
-
 input[type="checkbox"]:checked {
     background-color: black;
 }
