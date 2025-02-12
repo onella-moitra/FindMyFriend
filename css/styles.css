@@ -2,7 +2,6 @@ body
 {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
 
@@ -66,7 +65,7 @@ input[type="email"]:hover::placeholder {
 }
 
 .search-bar {
-    margin-top: 0%; /* Adjust as needed */
+    margin-top: 30%; /* Adjust as needed */
     margin-left: 15%;
     max-height: 90vh; /* Optional: Set maximum height and enable scrolling */
     overflow-y: auto; /* Optional: Add a scrollbar if the table is too tall*/
@@ -528,6 +527,10 @@ body {
 } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 
 .container{
+    
+}
+
+.scontainer{
     justify-content: center;
     align-items: center;
 }

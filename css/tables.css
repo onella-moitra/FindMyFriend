@@ -143,7 +143,7 @@ border-collapse: collapse;
     background-image: url("../images/UCFMAP.png"); /* Replace with your map image */
     background-size: cover;
     position: relative; /* Important for positioning waypoints */
-
+    margin-top: 15%;
     border: 5px solid; /* Start with a solid border */
     border-image: linear-gradient(to right, #008000, black, #008000) 1; /* Green to black gradient */
     border-image-slice: 1; /* Ensure the entire gradient is used */
@@ -151,8 +151,6 @@ border-collapse: collapse;
     /* Optional: Rounded corners */
     border-radius: 10px; /* Adjust radius for desired roundness */
     overflow: hidden; /* If you have rounded corners, this prevents map image from overflowing */
-
-    margin-top: 20px;
 }
 
 .waypoint-container { /* Container for button and tooltip */
