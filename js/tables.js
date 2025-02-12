@@ -146,12 +146,6 @@ confirmButton.addEventListener('click', () => {
     }
 );
 
-window.addEventListener('click', function(event) {
-	if (event.target === resultModal) {
-		resultModal.style.display = 'none';
-	}
-});
-
 cancelButton.addEventListener('click', () => {
     modal.style.display = "none"; // Hide the modal
    // rowToDelete = 0; // Reset
@@ -497,6 +491,9 @@ window.addEventListener('click', (event) => {
        // rowToDelete = 0;
 		contactToDelete = 0;
     }
+	else if (event.target === resultModal) {
+		resultModal.style.display = 'none';
+	}	
 })
 
 function validateFields(newFirstName,newLastName,newPhone,newEmail){
