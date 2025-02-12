@@ -67,7 +67,8 @@ input[type="email"]:hover::placeholder {
 
 .search-bar {
     position: absolute;
-	top: 120px;
+	top: 140px;
+    right: 300px;
     display: flex;
     align-items: top;
     border: 1px solid #008B47;
@@ -139,6 +140,11 @@ input[type="email"]:hover::placeholder {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     width: 300px; /* Adjust width as needed */
 }
+
+td input { /* Or target your specific input class/ID */
+    box-sizing: border-box;
+    width: 100%; /* Important: Make the input occupy the full cell width */
+  }
 
 #bar{
     width: 100%;
@@ -498,7 +504,7 @@ input[type="checkbox"]:checked {
 body { 
     background-image: url(https://img.freepik.com/free-vector/minimalist-background-gradient-design-style_483537-2988.jpg); 
     /*background-image: url();*/
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     background-position: right;
     transition: background-color 1s ease;
@@ -596,7 +602,7 @@ input[type="email"]{
 
 #logoutButton{
     width: auto;
-    margin-left: 40%;
+    margin-left: 5%;
 }
 
 select{
