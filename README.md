@@ -24,3 +24,7 @@ This app was developed as a collaborative effort to strengthen our understanding
      - Contact storage and queries.
 - Environment:
   - LAMP Stack
+ 
+This project was built by a group of developers working together to design and implement a complete CRUD web application using the LAMP stack.
+
+Love to hear your thoughts! If you'd like to suggest features or report issues, feel free to open an issue or submit a pull request.
