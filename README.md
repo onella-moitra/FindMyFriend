@@ -1,5 +1,5 @@
-# Contact Manager App
-Contact Manager App is a full-stack web application that allows users to easily add, search, update, and delete contact information. Built as a group project, it focuses on creating a clean, responsive user experience backed by reliable database management.
+# FindMyFriend App
+Contact manager app with a full-stack web application that allows users to easily add, search, update, and delete contact information. Built as a group project, it focuses on creating a clean, responsive user experience backed by reliable database management.
 
 ## Purpose
 This app was developed as a collaborative effort to strengthen our understanding of the LAMP stack and full-stack web development. It demonstrates CRUD operations, modular design, and team-based project coordination.
